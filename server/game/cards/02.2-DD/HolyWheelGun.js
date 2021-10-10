@@ -7,7 +7,7 @@ class HolyWheelGun extends DeedCard {
             playType: ['shootout'],
             cost: ability.costs.bootSelf(),
             target: {
-                activePromptTitle: 'Choose a dude',
+                activePromptTitle: 'Choose an opposing dude',
                 cardCondition: { location: 'play area', controller: 'opponent', participating: true },
                 cardType: ['dude']
             },
