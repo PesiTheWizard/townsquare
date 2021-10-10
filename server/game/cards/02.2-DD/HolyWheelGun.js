@@ -1,6 +1,6 @@
 const GoodsCard = require('../../goodscard.js');
 
-class HolyWheelGun extends DeedCard {
+class HolyWheelGun extends GoodsCard {
     setupCardAbilities(ability) {
         this.action({
             title: 'Holy Wheel Gun',
