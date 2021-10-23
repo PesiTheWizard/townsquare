@@ -3,9 +3,8 @@ const GameActions = require('../../GameActions/index.js');
 
 class Incubation extends ActionCard {
     setupCardAbilities(ability) {
-        this.persistentEffect({
-            condition: () => this.parent && this.parent.getType() === 'dude',
-            match: this.parent,
+        this.whileAttached({
+            condition: () => this.parent.getType() === 'dude',
             effect: [
                 ability.effects.modifyBullets(-1),
                 ability.effects.modifyInfluence(-1),
