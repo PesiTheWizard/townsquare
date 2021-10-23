@@ -12,17 +12,16 @@ class Incubation extends ActionCard {
             ]
         });
 
-        this.action({
-            title: 'Recover from Incubation',
-            playType: 'noon',
+        this.persistentEffect({
             condition: () => this.parent && this.parent.getType() === 'dude',
-            cost: ability.costs.bootParent(),
-            handler: context => {
-                const patientName = this.parent.title;
-                this.game.resolveGameAction(GameActions.discardCard({ card: this }), context).thenExecute(() => {
-                    this.game.addMessage('{0} boots to discard an attached {1}', patientName, this);
-                });
-            }
+            match: this.parent,
+            effect: ability.effects.addCardAction({
+                title: 'Recover from Incubation',
+                playType: ['noon'],
+                cost: ability.costs.bootSelf(),
+                message: context => this.game.addMessage('{0} has {1} boot to recover from their {2}', context.player, context.source, this),
+                handler: context => this.game.resolveGameAction(GameActions.discardCard({ card: this }), context)
+            })
         });
 
         this.action({
