@@ -8,20 +8,15 @@ class Incubation extends ActionCard {
             effect: [
                 ability.effects.modifyBullets(-1),
                 ability.effects.modifyInfluence(-1),
-                ability.effects.modifyValue(-3)
+                ability.effects.modifyValue(-3),
+                ability.effects.addCardAction({
+                    title: 'Recover from Incubation',
+                    playType: ['noon'],
+                    cost: ability.costs.bootSelf(),
+                    message: context => this.game.addMessage('{0} has {1} boot to recover from their {2}', context.player, context.source, this),
+                    handler: context => this.game.resolveGameAction(GameActions.discardCard({ card: this }), context)
+                })
             ]
-        });
-
-        this.persistentEffect({
-            condition: () => this.parent && this.parent.getType() === 'dude',
-            match: this.parent,
-            effect: ability.effects.addCardAction({
-                title: 'Recover from Incubation',
-                playType: ['noon'],
-                cost: ability.costs.bootSelf(),
-                message: context => this.game.addMessage('{0} has {1} boot to recover from their {2}', context.player, context.source, this),
-                handler: context => this.game.resolveGameAction(GameActions.discardCard({ card: this }), context)
-            })
         });
 
         this.action({
