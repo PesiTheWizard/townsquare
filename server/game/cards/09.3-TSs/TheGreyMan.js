@@ -2,7 +2,7 @@ const DudeCard = require('../../dudecard.js');
 const GameActions = require('../../GameActions/index.js');
 
 class TheGreyMan extends DudeCard {
-    setupCardAbilities(ability) {
+    setupCardAbilities() {
         this.action({
             title: 'The Grey Man',
             playType: ['noon'],
