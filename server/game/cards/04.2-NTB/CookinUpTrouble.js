@@ -10,7 +10,6 @@ class CookinUpTrouble extends ActionCard {
             title: 'Noon: Cookin\' Up Trouble',
             playType: ['noon'],
             condition: () => this.game.getNumberOfPlayers() > 1,
-            message: context => this.game.addMessage('{0} uses {1} to ', context.player, this),
             handler: context => {
                 let lookAtHandTitle = `Look at ${context.player.getOpponent().name}'s hand to discard a card`;
                 if(!this.tracker.eventHappened()) {
@@ -26,7 +25,7 @@ class CookinUpTrouble extends ActionCard {
                         context.game.addMessage('{0} uses {1} to look at opponent\' hand and discard {2}', player, this, cards), {}, context),
                     onCancel: player => {
                         if(this.tracker.eventHappened()) {
-                            context.game.addMessage('{0} uses {1} to look at opponent\' hand but did not find any action card to discard', 
+                            context.game.addMessage('{0} uses {1} to look at opponent\' hand but did not find any card to discard', 
                                 player, this);
                         } else {
                             context.game.addMessage('{0} uses {1} to look at opponent\' hand', player, this);
