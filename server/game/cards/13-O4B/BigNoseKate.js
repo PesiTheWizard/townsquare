@@ -33,7 +33,7 @@ class BigNoseKate extends DudeCard {
                 if(!context.target.isWanted()) {
                     this.game.promptForYesNo(context.player, {
                         title: 'Do you want to add a bounty to ' + context.target.title + '?',
-                        onYes: player => {
+                        onYes: () => {
                             this.game.resolveGameAction(GameActions.addBounty({ card: context.target }), context);
                             msg += ' and 1 bounty';
                         },
