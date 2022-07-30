@@ -10,7 +10,7 @@ class SteeleArcherExp1 extends DudeCard {
                 activePromptTitle: 'Choose hex',
                 cardCondition: {
                     location: 'play area',
-                    condition: card => card.parent && card.isNearby(this.gamelocation) && card.hasKeyword('Hex') && card.booted
+                    condition: card => card.parent && card.isNearby(this.gamelocation) && card.hasKeyword('hex') && card.booted
                 },
                 cardType: ['spell']
             },
