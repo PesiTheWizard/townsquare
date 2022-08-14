@@ -22,8 +22,8 @@ class StokersSabre extends GoodsCard {
                 },
                 cardType: ['spell']
             },
-            message: context => this.game.addMessage('{0} uses {1}\'s {2} to refresh their {3}',
-                context.player, context.target.parent, this, context.target),
+            message: context => this.game.addMessage('{0} uses {1} to refresh {2}\'s {3}',
+                context.player, this, context.target.parent, context.target),
             handler: (context) => {
                 context.target.resetAbilities();
                 this.game.resolveGameAction(GameActions.unbootCard({ card: context.target }), context);
