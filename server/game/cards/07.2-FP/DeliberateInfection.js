@@ -2,7 +2,7 @@ const ActionCard = require('../../actioncard.js');
 const GameActions = require('../../GameActions/index.js');
 
 class DeliberateInfection extends ActionCard {
-    setupCardAbilities() {
+    setupCardAbilities(ability) {
         this.whileAttached({
             condition: () => this.parent.getType() === 'dude',
             effect: [
