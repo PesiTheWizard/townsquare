@@ -22,7 +22,7 @@ class CallingTheCavalry extends ActionCard {
                     condition: event => event.playWindow.name === 'shootout resolution' 
                 }, eventHandler);
                 this.game.promptForSelect(context.player, {
-                    activePromptTitle: 'Select a dude',
+                    activePromptTitle: 'Select a dude to make a stud',
                     waitingPromptTitle: 'Waiting for opponent to select dude',
                     cardCondition: card => card.location === 'play area' && card.controller === context.player && card.isParticipating(),
                     cardType: 'dude',
@@ -33,7 +33,8 @@ class CallingTheCavalry extends ActionCard {
                         }));    
                         this.game.addMessage('{0} uses {1} to set {2} as stud', player, this, card);
                         return true;
-                    }
+                    },
+                    source: this
                 });        
             }
         }); 
