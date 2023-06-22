@@ -87,7 +87,7 @@ class Player extends Spectator {
         if(!this.outfit) {
             return '';
         }
-        return this.outfit.gang_code;
+        return this.outfit.gang_code.length && this.outfit.gang_code[0];
     }
 
     modifyCasualties(amount) {
@@ -722,7 +722,7 @@ class Player extends Spectator {
 
         if(card.hasKeyword('gadget') && params.playingType === 'shoppin') {
             let availableScientist = this.cardsInPlay.find(searchCard =>
-                searchCard.getType() === 'dude' && searchCard.canPerformSkillOn(card) && !searchCard.booted);
+                searchCard.getType() === 'dude' && searchCard.canPerformSkillOn(card) && !searchCard.booted && searchCard.isInControlledLocation());
             if(!availableScientist) {
                 return false;
             }
