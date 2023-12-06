@@ -9,7 +9,7 @@ class EssenceOfArmitage extends GoodsCard {
         this.persistentEffect({
             targetController: 'any',
             condition: () => this.parent && this.parent.isParticipating(),
-            match: card => card.isParticipating() && !card.hasKeyword('abomination'),
+            match: card => card.getType() === 'dude' && card.isParticipating() && !card.hasKeyword('abomination'),
             effect: ability.effects.modifyBullets(-1)
         });
 
@@ -17,7 +17,7 @@ class EssenceOfArmitage extends GoodsCard {
             title: 'React: Essence of Armitage',
             when: {
                 onDudeSentHome: event => this.isParticipating() && 
-                    event.card.controller !== this.controller && event.params.options.isFleeing
+                    event.card.controller !== this.controller && event.params.options.reason === 'fleeing'
             },
             cost: ability.costs.bootSelf(),
             message: context => 
