@@ -123,7 +123,7 @@
 |:heavy_check_mark:   | 01107| Lady Luck
 |:heavy_check_mark:   | 01108| Bottom Dealin'
 |:heavy_check_mark:   | 01109| Make the Smart Choice
-|                     | 01110| Tresspassin'
+|:heavy_check_mark:   | 01110| Tresspassin'
 |                     | 01111| Auction
 |:heavy_check_mark:   | 01112| The Stakes Just Rose
 |:heavy_check_mark:   | 01113| Sun in Yer Eyes
