@@ -42,7 +42,8 @@ class BuckinBillyBallard extends DudeCard {
                             this.game.addMessage('{0} uses {1} to boot {2}', player, this, card);
                         });
                         return true;
-                    }
+                    },
+                    source: this
                 });
             }
         });
