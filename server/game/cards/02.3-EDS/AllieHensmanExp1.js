@@ -28,10 +28,10 @@ class AllieHensmanExp1 extends DudeCard {
                         amount: MarkWorth
                     });
                     this.game.addMessage('{0} pays {1} a {2} GR ransom for {3}', vBoss, context.player, MarkWorth, job.mark)
-                } else if (this.game.discardFromPlay([job.mark], true, () => true, { isCardEffect: true }, context)) {
+                } else if (this.game.discardFromPlay([job.mark], () => true, { isCardEffect: true }, context)) {
                     this.game.addMessage('{0} was discarded due to {1}\'s job and {2}\'s poverty', job.mark, this, vBoss);
-                } else { // should not happen
-                    this.game.addMessage('{0} somehow not discarded despite successful {1} job.', job.mark, this);
+                } else { // should have been discarded, somehow isn't
+                    this.game.addMessage('{0} was not discarded despite successful {1} job.', job.mark, this);
                 }
             }
         });
