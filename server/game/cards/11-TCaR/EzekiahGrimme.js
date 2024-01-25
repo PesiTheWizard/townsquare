@@ -20,7 +20,7 @@ class EzekiahGrimme extends LegendCard {
             title: 'React: Attach pulled spell',
             when: {
                 onPullSuccess: event => event.source && event.source.isSpell() &&
-                    event.pullingDude.controller === this.controller &&
+                    event.pullingDude.controller.equals(this.controller) &&
                     event.source.parent === event.pullingDude &&
                     event.pulledCard.isSpell()
             },
