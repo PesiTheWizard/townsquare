@@ -45,7 +45,7 @@ class FuntimeFreddy extends DudeCard {
                                             activePromptTitle: 'Select a dude for Hex',
                                             waitingPromptTitle: 'Waiting for opponent to select dude',
                                             cardCondition: card => card.location === 'play area' &&
-                                                    card.controller === this.controller &&
+                                                    card.controller.equals(this.controller) &&
                                                     card.hasKeyword('huckster'),
                                             cardType: 'dude',
                                             onSelect: (player, huckster) => {
@@ -53,17 +53,17 @@ class FuntimeFreddy extends DudeCard {
                                                     playType: 'ability',
                                                     abilitySourceType: 'card',
                                                     targetParent: huckster
-                                                }), player, hexToAttach);  
-                                                player.discardFromHand(1, discarded => 
+                                                }), player, hexToAttach);
+                                                player.discardFromHand(1, discarded =>
                                                     this.game.addMessage('{0} discards {1} from their hand as a result of {2}\'s ability', player, discarded, this),
-                                                { 
+                                                {
                                                     title: this.title
-                                                }, context);                                                    
+                                                }, context);
                                                 return true;
                                             },
                                             source: this
                                         });
-                                    });                                      
+                                    });
                                     return true;
                                 },
                                 source: this
@@ -75,7 +75,7 @@ class FuntimeFreddy extends DudeCard {
                         }
                     }),
                     context
-                ); 
+                );
             }
         });
     }
