@@ -11,7 +11,7 @@ class DrErikYaple extends DudeCard {
                 onPossesFormed: () => true
             },
             cost: ability.costs.boot(card => card.isParticipating() &&
-                card.controller === this.controller &&
+                card.controller.equals(this.controller) &&
                 card.hasAllOfKeywords(['weapon', 'gadget'])),
             target: {
                 activePromptTitle: 'Choose a dude to add bounty',
