@@ -6,7 +6,7 @@ class FriendsInHighPlaces extends ActionCard {
             title: 'React: Friends in High Places',
             when: {
                 onDudeCalledOut: event => 
-                    event.callee.controller === this.controller &&
+                    event.callee.controller.equals(this.controller) &&
                     event.callee.influence > event.caller.influence &&
                     !event.callee.booted &&
                     event.canReject === true
