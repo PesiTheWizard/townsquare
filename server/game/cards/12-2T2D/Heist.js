@@ -23,7 +23,7 @@ class Heist extends ActionCard {
                 this.game.addMessage('{0} uses {1} to gain production of {2} ({3})', 
                     context.player, this, job.mark, job.mark.production);
                 if(job.leader.location === 'play area') {
-                    if(job.mark.owner !== this.controller) {
+                    if(!job.mark.owner.equals(this.controller)) {
                         this.game.resolveGameAction(GameActions.unbootCard({ card: job.leader }), context).thenExecute(() => {
                             this.game.addMessage('{0} unboots dude {1} (leader of job {2})', 
                                 context.player, job.leader, this);
