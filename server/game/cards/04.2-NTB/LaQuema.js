@@ -25,8 +25,8 @@ class LaQuema extends GoodsCard {
                 context.ability.selectAnotherTarget(context.player, context, {
                     activePromptTitle: 'Select a dude',
                     waitingPromptTitle: 'Waiting for opponent to select dude',
-                    cardCondition: card => card.location === 'play area' && 
-                        card.controller !== this.controller && 
+                    cardCondition: card => card.location === 'play area' &&
+                        !card.controller.equals(this.controller) &&
                         card.isParticipating(),
                     cardType: 'dude',
                     gameAction: 'boot',
