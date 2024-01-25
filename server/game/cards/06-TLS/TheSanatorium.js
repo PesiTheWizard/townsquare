@@ -19,7 +19,7 @@ class TheSanatorium extends OutfitCard {
                     activePromptTitle: 'Choose an opposing dude',
                     waitingPromptTitle: 'Waiting for opponent to select dude',
                     cardCondition: card => card.location === 'play area' &&
-                        card.controller !== this.owner &&
+                        !card.controller.equals(this.owner) &&
                         card.isNearby(context.target.gamelocation),
                     cardType: 'dude',
                     onSelect: (player, card) => {
@@ -40,7 +40,7 @@ class TheSanatorium extends OutfitCard {
                                 ability.effects.modifyValue(-1)
                             ]
                         }));
-                        this.game.addMessage('{0} uses {1} to give {2} -1 bullets and -1 value', 
+                        this.game.addMessage('{0} uses {1} to give {2} -1 bullets and -1 value',
                             context.player, this, card);
                         return true;
                     }
@@ -55,7 +55,7 @@ class TheSanatorium extends OutfitCard {
                 match: this.abilityContext.target,
                 effect: ability.effects.modifyInfluence(1)
             }));
-            this.game.addMessage('{0} uses {1} to give {2} +1 influence', 
+            this.game.addMessage('{0} uses {1} to give {2} +1 influence',
                 this.abilityContext.player, this, this.abilityContext.target);
         }
         if(arg === 'huck') {
@@ -63,7 +63,7 @@ class TheSanatorium extends OutfitCard {
                 match: this.abilityContext.target,
                 effect: ability.effects.modifySkillRating('huckster', 1)
             }));
-            this.game.addMessage('{0} uses {1} to give {2} +1 huckster skill', 
+            this.game.addMessage('{0} uses {1} to give {2} +1 huckster skill',
                 this.abilityContext.player, this, this.abilityContext.target);
         }
         return true;
