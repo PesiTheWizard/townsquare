@@ -7,14 +7,14 @@ class MasterShou extends DudeCard {
             playType: ['noon'],
             cost: ability.costs.boot(card =>
                 card.location === 'play area' &&
-                card.controller === this.controller &&
+                card.controller.equals(this.controller) &&
                 card.hasKeyword('abomination') &&
                 card.isAtDeed() &&
                 card.isNearby(this.gamelocation)
             ),
             message: context => {
                 const deedOwner = context.costs.boot.locationCard.owner;
-                if(context.costs.boot.locationCard.owner === this.controller) {
+                if(context.costs.boot.locationCard.owner.equals(this.controller)) {
                     this.game.addMessage('{0} uses {1} and boots {2}, but they are the deed owners', 
                         context.player, this, context.costs.boot);
                 } else {
@@ -23,7 +23,7 @@ class MasterShou extends DudeCard {
                 }
             },
             handler: context => {
-                if(context.costs.boot.locationCard.owner !== this.controller) {
+                if(!context.costs.boot.locationCard.owner.equals(this.controller)) {
                     this.game.transferGhostRock({
                         from: context.costs.boot.locationCard.owner,
                         to: this.controller,
