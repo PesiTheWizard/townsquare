@@ -11,7 +11,7 @@ class BartholomewPFountain extends DudeCard {
             cost: [
                 ability.costs.bootSelf(),
                 ability.costs.boot(card => card.location === 'play area' &&
-                    card.owner === this.controller &&
+                    card.owner.equals(this.controller) &&
                     card.hasKeyword('ranch')
                 )
             ],
@@ -30,8 +30,8 @@ class BartholomewPFountain extends DudeCard {
                     activePromptTitle: `Select where ${context.target.title} should move to`,
                     cardCondition: { 
                         location: 'play area',
-                        condition: card => card.controller === context.player ||
-                            card.owner === context.player
+                        condition: card => card.controller.equals(context.player) ||
+                            card.owner.equals(context.player)
                     },
                     onSelect: (player, location) => {
                         this.game.resolveGameAction(GameActions.moveDude({ 
