@@ -8,7 +8,7 @@ class MakeEmSweat extends ActionCard {
             playType: 'shootout',
             cost: ability.costs.boot(card =>
                 card.getType() === 'dude' &&
-                card.isParticipating() && card.controller === this.controller &&
+                card.isParticipating() && card.controller.equals(this.controller) &&
                     !card.booted),
             target: {
                 activePromptTitle: 'Choose dude to reduce bullets',
