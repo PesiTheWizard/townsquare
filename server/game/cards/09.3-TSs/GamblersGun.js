@@ -5,7 +5,7 @@ class TheGamblersGun extends GoodsCard {
     setupCardAbilities(ability) {
         this.traitReaction({
             when: {
-                onCardAbilityResolved: event => event.context.player !== this.controller &&
+                onCardAbilityResolved: event => !event.context.player.equals(this.controller) &&
                     event.ability.isCardAbility() && event.ability.playTypePlayed() === 'cheatin resolution' &&
                     this.parent && this.parent.getType() === 'dude'
             },
