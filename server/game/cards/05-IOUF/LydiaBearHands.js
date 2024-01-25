@@ -9,10 +9,10 @@ class LydiaBearHands extends DudeCard {
             cost: ability.costs.bootSelf(),
             target: {
                 activePromptTitle: 'Choose a spirit to boot',
-                cardCondition: { 
-                    location: 'play area', 
-                    controller: 'current', 
-                    condition: card => card.parent === this && card.isSpirit() 
+                cardCondition: {
+                    location: 'play area',
+                    controller: 'current',
+                    condition: card => card.parent === this && card.isSpirit()
                 },
                 cardType: ['spell'],
                 gameAction: 'boot'
@@ -22,7 +22,7 @@ class LydiaBearHands extends DudeCard {
                     this.game.promptForSelect(context.player, {
                         activePromptTitle: 'Select a dude',
                         waitingPromptTitle: 'Waiting for opponent to select dude',
-                        cardCondition: card => card.controller === this.controller &&
+                        cardCondition: card => card.controller.equals(this.controller) &&
                             card.isParticipating(),
                         cardType: 'dude',
                         onSelect: (player, card) => {
@@ -30,7 +30,7 @@ class LydiaBearHands extends DudeCard {
                                 match: card,
                                 effect: ability.effects.addKeyword('harrowed')
                             }));
-                            this.game.addMessage('{0} uses {1} and boots {2} to give {3} the Harrowed keyword', 
+                            this.game.addMessage('{0} uses {1} and boots {2} to give {3} the Harrowed keyword',
                                 player, this, context.target, card);
                             return true;
                         },
