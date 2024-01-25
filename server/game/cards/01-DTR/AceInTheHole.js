@@ -20,14 +20,14 @@ class AceInTheHole extends SpellCard {
                 this.game.promptForSelect(context.player, {
                     activePromptTitle: 'Select a card to ace',
                     waitingPromptTitle: 'Waiting for opponent to select card',
-                    cardCondition: card => card.controller === context.player && card.location === 'draw hand',
+                    cardCondition: card => card.controller.equals(context.player) && card.location === 'draw hand',
                     onSelect: (player, cardToAce) => {
                         if(player.hand.length > 0) {
                             this.game.resolveGameAction(GameActions.aceCard({ card: cardToAce }));
                             this.game.promptForSelect(player, {
                                 activePromptTitle: 'Select a card to put into draw hand',
                                 waitingPromptTitle: 'Waiting for opponent to select replacement card',
-                                cardCondition: card => card.controller === context.player && card.location === 'hand',
+                                cardCondition: card => card.controller.equals(context.player) && card.location === 'hand',
                                 onSelect: (player, replacementCard) => {
                                     if(player.moveCardWithContext(replacementCard, 'draw hand', context)) {
                                         this.game.addMessage('{0} uses {1} cast by {2} to ace {3} in draw hand and replace it with {4}', 
@@ -52,4 +52,3 @@ class AceInTheHole extends SpellCard {
 AceInTheHole.code = '01101';
 
 module.exports = AceInTheHole;
-
