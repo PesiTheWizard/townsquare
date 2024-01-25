@@ -9,7 +9,7 @@ class VioletEsperanza extends DudeCard {
             title: 'Shootout: Violet Esperanza',
             playType: ['shootout'],
             condition: () => this.isParticipating() && 
-                this.controller === this.game.shootout.leaderPlayer &&
+                this.controller.equals(this.game.shootout.leaderPlayer) &&
                 this.game.shootout.isJob(),
             cost: [
                 ability.costs.ace(card => card.parent === this && card.hasKeyword('hex')),
