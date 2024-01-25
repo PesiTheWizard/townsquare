@@ -9,12 +9,11 @@ class GeneralStore extends DeedCard {
             cost: ability.costs.bootSelf(),
             target:{
                 activePromptTitle: 'Select a goods or spell to attach',
-                cardCondition: { location: 'hand', condition: card => card.owner === this.controller },
+                cardCondition: { location: 'hand', condition: card => card.owner.equals(this.controller) },
                 cardType: ['goods', 'spell']
             },
-            message: context => {
-                this.game.addMessage('{0} uses {1} to shop for {2}, reducing it\'s cost by 2', context.player, this, context.target);
-            },
+            message: context => this.game.addMessage('{0} uses {1} to shop for {2}, reducing it\'s cost by 2',
+                context.player, this, context.target),
             handler: context => {
                 this.game.resolveStandardAbility(StandardActions.putIntoPlayWithReduction(2), context.player, context.target);
             }
