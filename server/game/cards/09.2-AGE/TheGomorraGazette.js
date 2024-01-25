@@ -6,7 +6,7 @@ class TheGomorraGazette extends DeedCard {
             title: 'Gain Ghost Rock',
             when: {
                 onCardBountyAdded: event =>
-                    event.card.controller !== this.controller
+                    !event.card.controller.equals(this.controller)
             },
             cost: ability.costs.bootSelf(),
             handler: context => {
