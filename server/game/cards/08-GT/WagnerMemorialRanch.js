@@ -13,19 +13,19 @@ class WagnerMemorialRanch extends DeedCard {
             title: 'React: Wagner Memorial Ranch',
             triggerBefore: true,
             when: {
-                onPullForSkill: event => event.player === this.controller &&
+                onPullForSkill: event => event.player.equals(this.controller) &&
                     event.properties.source && event.properties.source.hasKeyword('gadget') &&
                     event.properties.pullingDude.gamelocation === this.uuid
             },
             cost: ability.costs.bootSelf(),
-            message: context => 
+            message: context =>
                 this.game.addMessage('{0} uses {1} to lower difficulty of skill check by 2 to {2}', 
                     context.player, this, context.event.difficulty - 2),
             handler: context => {
                 const eventHandler = event => {
                     let unbootText = '';
                     if(event.pullingDude.booted) {
-                        this.game.resolveGameAction(GameActions.unbootCard({ 
+                        this.game.resolveGameAction(GameActions.unbootCard({
                             card: event.pullingDude
                         }), context);
                         unbootText = 'unboots {1}';
@@ -41,15 +41,15 @@ class WagnerMemorialRanch extends DeedCard {
                 };
                 const saveEventHandler = context.event.handler;
                 context.replaceHandler(pullSkillEvent => {
-                    this.game.onceConditional('onPullSuccess', { 
+                    this.game.onceConditional('onPullSuccess', {
                         condition: event => event.source === pullSkillEvent.properties.source &&
                             event.pullingDude === pullSkillEvent.properties.pullingDude
                     }, eventHandler);
                     pullSkillEvent.difficulty -= 2;
                     saveEventHandler(pullSkillEvent);
-                    this.game.queueSimpleStep(() => { 
+                    this.game.queueSimpleStep(() => {
                         this.game.removeListener('onPullSuccess', eventHandler);
-                    });     
+                    });
                 });
             }
         });
