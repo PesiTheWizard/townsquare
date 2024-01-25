@@ -15,7 +15,7 @@ class DrGregoryTremane extends DudeCard {
             title: 'Shootout: Dr. Gregory Tremane',
             playType: ['shootout'],
             cost: ability.costs.boot(card =>
-                card.controller === this.controller &&
+                card.controller.equals(this.controller) &&
                     card.isGadget() &&
                     card.isParticipating()
             ),
