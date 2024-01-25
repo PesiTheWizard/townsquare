@@ -22,10 +22,10 @@ class DenOfThieves extends OutfitCard {
             cost: [
                 ability.costs.bootSelf(),
                 ability.costs.raiseBounty(card => card.location === 'play area' &&
-                    card.controller === this.owner &&
+                    card.controller.equals(this.owner) &&
                     card.hasKeyword('grifter'))
             ],
-            message: context => 
+            message: context =>
                 this.game.addMessage('{0} uses {1} and adds bounty to {2} to increase their rank by 1 and gain 1 GR ; ' +
                     '{0}\'s hand is now considered illegal', context.player, this, context.costs.raiseBounty),
             handler: context => {
