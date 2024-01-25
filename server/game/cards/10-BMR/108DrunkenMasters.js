@@ -18,7 +18,7 @@ class DrunkenMasters extends OutfitCard {
             title: 'React: 108 Drunken Masters',
             triggerBefore: true,
             when: {
-                onCardPulled: event => event.props.player === this.owner &&
+                onCardPulled: event => event.props.player.equals(this.owner) &&
                     event.props.source &&
                     event.props.source.hasKeyword('technique')
             },
@@ -35,7 +35,7 @@ class DrunkenMasters extends OutfitCard {
                             this.game.before('onPulledCardHandled', handleEvent => {
                                 handleEvent.replaceHandler(() => true);
                             }, true, handleEvent => 
-                                handleEvent.card === event.pulledCard && handleEvent.player === player);
+                                handleEvent.card === event.pulledCard && handleEvent.player.equals(player));
                             player.moveCardWithContext(event.pulledCard, 'hand', context);
                             this.game.addMessage('{0} uses {1} to put pulled card {2} to their hand', 
                                 player, this, event.pulledCard);    
@@ -62,14 +62,14 @@ class DrunkenMasters extends OutfitCard {
                 });
                 this.game.queueSimpleStep(() => { 
                     this.game.removeListener('onPullSuccess', eventHandler);
-                }); 
+                });
             }
         });
     }
 
     getNumOfSaloons() {
         return this.game.findCardsInPlay(card => ['outfit', 'deed'].includes(card.getType()) &&
-            card.controller === this.owner && card.hasKeyword('saloon')).length;
+            card.controller.equals(this.owner) && card.hasKeyword('saloon')).length;
     }
 }
 
