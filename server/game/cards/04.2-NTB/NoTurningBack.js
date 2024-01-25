@@ -8,7 +8,7 @@ class NoTurningBack extends ActionCard {
             playType: ['noon'],
             target: {
                 activePromptTitle: 'Choose a dude to ace',
-                cardCondition: { location: 'play area', controller: 'current', condition: card => card.owner === this.controller },
+                cardCondition: { location: 'play area', controller: 'current', condition: card => card.owner.equals(this.controller) },
                 cardType: ['dude'],
                 gameAction: 'ace'
             },
@@ -28,17 +28,17 @@ class NoTurningBack extends ActionCard {
                 this.game.promptForSelect(context.player, {
                     activePromptTitle: 'Choose a dude to ace',
                     waitingPromptTitle: 'Waiting for opponent to choose a dude',
-                    cardCondition: card => card.location === 'play area' && card.controller === context.player && card.owner === context.player,
+                    cardCondition: card => card.location === 'play area' && card.controller.equals(context.player) && card.owner.equals(context.player),
                     cardType: 'dude',
                     gameAction: 'ace',
                     onSelect: (player, card) => {
                         this.game.resolveGameAction(GameActions.aceCard({ card }), context).thenExecute(() => {
-                            this.game.resolveGameAction(GameActions.decreaseCasualties({ 
+                            this.game.resolveGameAction(GameActions.decreaseCasualties({
                                 player: player
                             }), context).thenExecute(() => {
                                 this.game.addMessage('{0} uses {1} and aces {2} to reduce casualties to 0', player, this, card);
                             });
-                        });           
+                        });
                         return true;
                     },
                     source: this
@@ -67,7 +67,7 @@ class NoTurningBack extends ActionCard {
                     },
                     match: context.player,
                     effect: ability.effects.dudesCannotFlee()
-                }));       
+                }));
                 this.game.addMessage('{0}\'s dudes cannot flee this round because of {1}', context.player, this);
             }
         });
