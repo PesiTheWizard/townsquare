@@ -9,7 +9,7 @@ class TheFourthRing extends OutfitCard {
             when: {
                 onPullSuccess: event =>
                     event.pullingDude && event.source &&
-                    event.pullingDude.controller === this.controller && 
+                    event.pullingDude.controller.equals(this.controller) && 
                     !event.pullingDude.isAtHome() &&
                     event.source.getType() === 'spell'
             },
@@ -22,9 +22,9 @@ class TheFourthRing extends OutfitCard {
                             this.game.resolveGameAction(GameActions.drawCards({ player: context.player, amount: 1 }), context).thenExecute(() => {
                                 context.player.modifyGhostRock(1);
                                 this.game.addMessage('{0} uses {1} to discard {2} to draw a card and gains 1 GR', context.player, this, discarded[0]);
-                            });                            
-                        }, { title: this.title });  
-                    }                    
+                            });
+                        }, { title: this.title });
+                    }
                 });
             }
         });
