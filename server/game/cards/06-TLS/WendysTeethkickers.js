@@ -8,15 +8,15 @@ class WendysTeethkickers extends GoodsCard {
             when: {
                 onDudeSentHome: event => event.options.originalLocation === this.gamelocation && 
                     event.card.booted &&
-                    event.card.controller !== this.controller,
+                    !event.card.controller.equals(this.controller),
                 onDudeMoved: event => event.options.originalLocation === this.gamelocation &&
                     event.target === event.card.controller.getOutfitCard().uuid &&
                     event.card.booted &&
-                    event.card.controller !== this.controller
+                    !event.card.controller.equals(this.controller)
             },
             cost: ability.costs.bootSelf(),
             actionContext: { card: this.parent, gameAction: 'unboot' },
-            message: context => 
+            message: context =>
                 this.game.addMessage('{0} uses {1} to give {2} +1 influence and unboot them', context.player, this, this.parent),
             handler: context => {
                 this.untilEndOfRound(context.ability, ability => ({
