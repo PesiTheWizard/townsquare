@@ -29,8 +29,8 @@ class CulpabilityScientizer extends GoodsCard {
             // about the location 
             target: {
                 activePromptTitle: 'Choose your dude',
-                cardCondition: { 
-                    location: 'play area', 
+                cardCondition: {
+                    location: 'play area',
                     controller: 'current',
                     condition: card => card.gamelocation === this.gamelocation
                 },
@@ -43,7 +43,7 @@ class CulpabilityScientizer extends GoodsCard {
                         waitingPromptTitle: 'Waiting for opponent to select dude',
                         cardCondition: card => card.getType() === 'dude' && card.location === 'play area' &&
                             card.gamelocation === context.target.gamelocation &&
-                            card.controller !== this.controller &&
+                            !card.controller.equals(this.controller) &&
                             card.isWanted(),
                         cardType: 'dude',
                         gameAction: 'callout',
