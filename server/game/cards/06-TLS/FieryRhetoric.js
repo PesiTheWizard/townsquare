@@ -14,7 +14,7 @@ class FieryRhetoric extends SpellCard {
                 message: context => this.game.addMessage('{0} plays {1} on {2}', context.player, this, context.target),
                 onSuccess: (job, context) => {
                     const numOfWantedDudes = this.game.getNumberOfCardsInPlay(card =>
-                        card.controller !== context.player &&
+                        !card.controller.equals(context.player) &&
                         card.getType() === 'dude' &&
                         card.isWanted());
                     this.applyAbilityEffect(context.ability, ability => ({
@@ -22,10 +22,10 @@ class FieryRhetoric extends SpellCard {
                         effect: ability.effects.modifyControl(numOfWantedDudes)
                     }));
                     if(numOfWantedDudes) {
-                        this.game.addMessage('{0} uses {1} to give {2} +{3} CP until the end of the day', 
+                        this.game.addMessage('{0} uses {1} to give {2} +{3} CP until the end of the day',
                             context.player, this, this.parent, numOfWantedDudes);
                     } else {
-                        this.game.addMessage('{0} uses {1}, but there are no opposing wanted dudes', 
+                        this.game.addMessage('{0} uses {1}, but there are no opposing wanted dudes',
                             context.player, this);
                     }
                 }
