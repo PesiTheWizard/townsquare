@@ -16,11 +16,11 @@ class EssenceOfArmitage extends GoodsCard {
         this.reaction({
             title: 'React: Essence of Armitage',
             when: {
-                onDudeSentHome: event => this.isParticipating() && 
-                    event.card.controller !== this.controller && event.params.options.reason === 'fleeing'
+                onDudeSentHome: event => this.isParticipating() &&
+                    !event.card.controller.equals(this.controller) && event.params.options.reason === 'fleeing'
             },
             cost: ability.costs.bootSelf(),
-            message: context => 
+            message: context =>
                 this.game.addMessage('{0} uses {1} to give {2} +1 permanent CP', context.player, this, this.parent),
             handler: () => {
                 this.parent.modifyControl(1);
