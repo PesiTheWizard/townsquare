@@ -15,10 +15,10 @@ class HellstrommePlant9 extends DeedCard {
             target: {
                 activePromptTitle: 'Choose a Horse or Gadget',
                 cardCondition: { 
-                    location: 'play area', 
-                    controller: 'current', 
+                    location: 'play area',
+                    controller: 'current',
                     condition: card => card.parent &&
-                        card.parent.owner === this.controller &&
+                        card.parent.owner.equals(this.controller) &&
                         (!this.game.shootout || card.isParticipating()) &&
                         (card.hasKeyword('gadget') || card.hasKeyword('horse'))
                 }
