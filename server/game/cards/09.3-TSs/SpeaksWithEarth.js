@@ -6,7 +6,7 @@ class SpeaksWithEarth extends DudeCard {
         this.reaction({
             title: 'Speaks-With-Earth',
             when: {
-                onDudeMoved: event => event.card.controller !== this.controller && event.target === this.gamelocation
+                onDudeMoved: event => !event.card.controller.equals(this.controller) && event.target === this.gamelocation
             },
             cost: ability.costs.bootSelf(),
             message: context => 
