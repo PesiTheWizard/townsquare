@@ -11,7 +11,7 @@ class EagleWardens extends OutfitCard {
             cost: [
                 ability.costs.bootSelf(),
                 ability.costs.boot(card => card.location === 'play area' &&
-                    card.controller === this.owner &&
+                    card.controller.equals(this.owner) &&
                     card.getType() === 'dude' &&
                     card.gamelocation === this.game.townsquare.uuid)
             ],
@@ -19,7 +19,7 @@ class EagleWardens extends OutfitCard {
                 this.abilityContext = context;
                 let cardsToDraw = context.costs.boot.influence < 2 ? 2 : 3;
                 context.player.drawCardsToHand(cardsToDraw, context).thenExecute(() => {
-                    this.game.addMessage('{0} uses {1} and boots {2} to draw {3} cards', 
+                    this.game.addMessage('{0} uses {1} and boots {2} to draw {3} cards',
                         context.player, this, context.costs.boot, cardsToDraw);
                     this.game.promptForSelect(context.player, {
                         activePromptTitle: 'Select a card',
