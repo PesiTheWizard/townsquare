@@ -11,7 +11,7 @@ class Fort51 extends OutfitCard {
                 context.ability.selectAnotherTarget(context.player, context, {
                     activePromptTitle: 'Select a dude',
                     waitingPromptTitle: 'Waiting for opponent to select dude',
-                    cardCondition: card => card.location === 'play area' && card.controller !== this.controller && card.influence < context.event.gadget.cost,
+                    cardCondition: card => card.location === 'play area' && !card.controller.equals(this.controller) && card.influence < context.event.gadget.cost,
                     cardType: 'dude',
                     gameAction: 'addBounty',
                     onSelect: (player, card) => {
@@ -28,7 +28,7 @@ class Fort51 extends OutfitCard {
             title: 'Noon: Remove Bounty',
             playType: 'noon',
             cost: ability.costs.boot(card =>
-                card.hasKeyword('gadget') && card.controller === this.controller && !card.isAtHome()
+                card.hasKeyword('gadget') && card.controller.equals(this.controller) && !card.isAtHome()
             ),
             target: {
                 activePromptTitle: 'Select a dude',
