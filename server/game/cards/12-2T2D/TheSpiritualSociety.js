@@ -22,7 +22,7 @@ class TheSpiritualSociety extends OutfitCard {
                 ability.costs.boot(card =>
                     card.location === 'play area' &&
                     card.getType() === 'dude' &&
-                    card.controller === this.owner
+                    card.controller.equals(this.owner)
                 )                
             ],
             handler: context => {
@@ -30,7 +30,7 @@ class TheSpiritualSociety extends OutfitCard {
                     activePromptTitle: 'Select a dude to boot',
                     waitingPromptTitle: 'Waiting for opponent to select a dude',
                     cardCondition: card => card.location === 'play area' &&
-                        card.controller !== this.controller &&
+                        !card.controller.equals(this.controller) &&
                         card.influence < context.costs.boot.influence &&
                         card.isInSameLocation(context.costs.boot),
                     cardType: 'dude',
