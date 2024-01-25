@@ -7,9 +7,9 @@ class HostileTakeover extends ActionCard {
             title: 'Noon: Hostile Takeover',
             playType: ['noon'],
             cost: ability.costs.boot(card =>
-                card.controller === this.owner &&
+                card.controller.equals(this.owner) &&
                 card.location === 'play area' &&
-                card.locationCard.owner !== this.owner &&
+                !card.locationCard.owner.equals(this.owner) &&
                 card.getType() === 'dude' &&
                 card.isStud()
             ),
