@@ -13,13 +13,13 @@ class FiddleGame extends ActionCard {
             ignoreActionCosts: true,
             location: 'play area',
             when: {
-                onCardAbilityResolved: event => event.context.player !== this.controller &&
+                onCardAbilityResolved: event => !event.context.player.equals(this.controller) &&
                     event.ability.isCardAbility() &&
                     event.ability.playTypePlayed() === 'cheatin resolution'
             },
             handler: context => {
                 this.game.resolveGameAction(GameActions.discardCard({ card: this }), context).thenExecute(() => {
-                    this.game.addMessage('{0} discards {1} because a Cheatin\' Resolution was used against them', 
+                    this.game.addMessage('{0} discards {1} because a Cheatin\' Resolution was used against them',
                         context.player, this, context.target);
                 });
             }
@@ -30,7 +30,7 @@ class FiddleGame extends ActionCard {
             playType: 'noon',
             cost: ability.costs.bootLeader(),
             target: 'currentHome',
-            message: context => 
+            message: context =>
                 this.game.addMessage('{0} plays {1} on {2}', context.player, this, context.target),
             onSuccess: (job, context) => {
                 context.player.attach(this, context.player.getOutfitCard(), 'ability', () => {
