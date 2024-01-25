@@ -20,7 +20,7 @@ class OwlsInsight extends SpellCard {
             this.game.promptForSelect(context.player, {
                 activePromptTitle: 'Select goods or spell to attach',
                 waitingPromptTitle: 'Waiting for opponent to select goods or spell',
-                cardCondition: card => card.location === 'hand' && card.owner === context.player,
+                cardCondition: card => card.location === 'hand' && card.owner.equals(context.player),
                 cardType: ['goods', 'spell'],
                 onSelect: (player, card) => {
                     this.game.resolveStandardAbility(StandardActions.putIntoPlayWithReduction(1), player, card);
