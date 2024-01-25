@@ -14,12 +14,12 @@ class DoomsdaySupply extends GoodsCard {
             ],
             target: {
                 activePromptTitle: 'Select goods card',
-                cardCondition: { 
-                    location: 'discard pile', 
-                    controller: 'current', 
-                    condition: (card, context) => 
+                cardCondition: {
+                    location: 'discard pile',
+                    controller: 'current',
+                    condition: (card, context) =>
                         card !== this &&
-                        context.player.getSpendableGhostRock({ 
+                        context.player.getSpendableGhostRock({
                             activePlayer: context.player,
                             context 
                         }) >= card.cost - 2
@@ -31,7 +31,7 @@ class DoomsdaySupply extends GoodsCard {
                     activePromptTitle: 'Select a dude',
                     waitingPromptTitle: 'Waiting for opponent to select dude',
                     cardCondition: card => card.location === 'play area' &&
-                        card.controller === this.controller &&
+                        card.controller.equals(this.controller) &&
                         (!this.game.shootout || card.isParticipating()),
                     cardType: 'dude',
                     onSelect: (player, dude) => {
@@ -41,7 +41,7 @@ class DoomsdaySupply extends GoodsCard {
                             targetParent: dude,
                             reduceAmount: 2
                         }, () => {
-                            this.game.addMessage('{0} uses {1} to attach {2} from discard pile to {3}', 
+                            this.game.addMessage('{0} uses {1} to attach {2} from discard pile to {3}',
                                 player, this, context.target, dude);
                         }), player, context.target);
                         return true;
