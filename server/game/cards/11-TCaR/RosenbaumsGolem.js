@@ -40,7 +40,7 @@ class RosenbaumsGolem extends DudeCard {
             context.ability.selectAnotherTarget(context.player, context, {
                 activePromptTitle: 'Select your dude',
                 cardCondition: {
-                    condition: card => card.controller === this.controller && card !== this,
+                    condition: card => card.controller.equals(this.controller) && card !== this,
                     location: 'play area'
                 },
                 cardType: 'dude',
