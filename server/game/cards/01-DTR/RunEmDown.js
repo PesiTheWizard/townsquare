@@ -8,10 +8,10 @@ class RunEmDown extends ActionCard {
             playType: ['noon'],
             target: {
                 activePromptTitle: 'Choose location with mounted dudes',
-                cardCondition: { 
-                    location: 'play area', 
-                    condition: card => 
-                        this.game.getDudesAtLocation(card.gamelocation).some(occupant => occupant && occupant.hasHorse()) 
+                cardCondition: {
+                    location: 'play area',
+                    condition: card =>
+                        this.game.getDudesAtLocation(card.gamelocation).some(occupant => occupant && occupant.hasHorse())
                 },
                 cardType: ['location']
             },
@@ -21,7 +21,7 @@ class RunEmDown extends ActionCard {
                     waitingPromptTitle: 'Waiting for opponent to select mounted dudes',
                     multiSelect: true,
                     numCards: 0,
-                    cardCondition: card => card.controller === context.player && card.gamelocation === context.target.uuid && card.hasHorse(),
+                    cardCondition: card => card.controller.equals(context.player) && card.gamelocation === context.target.uuid && card.hasHorse(),
                     cardType: 'dude',
                     onSelect: (player, cards) => {
                         context.ability.selectAnotherTarget(player, context, {
@@ -32,7 +32,7 @@ class RunEmDown extends ActionCard {
                             gameAction: ['moveDude'],
                             onSelect: (player, runnedDude) => {
                                 let action = GameActions.simultaneously(
-                                    cards.map(card => GameActions.moveDude({ 
+                                    cards.map(card => GameActions.moveDude({
                                         card: card, 
                                         targetUuid: runnedDude.gamelocation
                                     }))
@@ -47,16 +47,16 @@ class RunEmDown extends ActionCard {
                                             gameAction: ['callout'],
                                             onSelect: (player, callerDude) => {
                                                 this.game.resolveGameAction(GameActions.callOut({ caller: callerDude, callee: runnedDude }), context);
-                                                this.game.addMessage('{0} uses {1} to move {2} to {3}, boot {4} and call them out', 
+                                                this.game.addMessage('{0} uses {1} to move {2} to {3}, boot {4} and call them out',
                                                     player, this, cards, runnedDude.locationCard, runnedDude);
                                                 return true;
                                             },
                                             onCancel: player =>
-                                                this.game.addMessage('{0} uses {1} to move {2} to {3} and boot {4}', 
+                                                this.game.addMessage('{0} uses {1} to move {2} to {3} and boot {4}',
                                                     player, this, cards, runnedDude.locationCard, runnedDude)
                                         });
                                     }, context);
-                                }, context);                                
+                                }, context);
                                 return true;
                             }
                         });
