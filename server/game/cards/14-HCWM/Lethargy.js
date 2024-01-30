@@ -23,7 +23,7 @@ class Lethargy extends SpellCard {
                 this.game.addMessage('{0} uses {1} to prevent {2}\'s unboot at Nightfall unless their controller pays 1 GR', 
                     context.player, this, context.target);
                 this.game.once('onNightfallUnbooting', () => {
-                    if(context.target.booted && context.target.controller !== context.player) {
+                    if(context.target.booted && !context.target.controller.equals(context.player)) {
                         if(context.target.controller.getSpendableGhostRock() > 0) {
                             this.game.promptForYesNo(context.target.controller, {
                                 title: `Do you want to pay 1 GR to have ${context.target.title} unbooted?`,
