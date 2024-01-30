@@ -45,7 +45,7 @@ class DrJTGoodenough extends DudeCard {
                                     this.game.promptForSelect(context.player, {
                                         activePromptTitle: 'Select a dude for Weapon',
                                         cardCondition: card => card.location === 'play area' &&
-                                                card.controller === this.controller,
+                                                card.controller.equals(this.controller),
                                         cardType: 'dude',
                                         onSelect: (player, dude) => {
                                             this.lastingEffect(context.ability, ability => ({
