@@ -12,7 +12,7 @@ class EagleWomanThatAllLookAt extends DudeCard {
                     activePromptTitle: 'Select a dude',
                     waitingPromptTitle: 'Waiting for opponent to select dude',
                     cardCondition: card => card.location === 'play area' &&
-                        card.controller === this.controller &&
+                        card.controller.equals(this.controller) &&
                         this.costCanBePaid(card),
                     cardType: 'dude',
                     onSelect: (player, dude) => {
