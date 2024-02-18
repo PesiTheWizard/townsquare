@@ -12,7 +12,7 @@ class EBFarnum extends DudeCard {
                     activePromptTitle: 'Select dudes to boot',
                     waitingPromptTitle: 'Waiting for opponent to select dudes',
                     cardCondition: card => card.location === 'play area' &&
-                        card.controller === event.context.player &&
+                        card.controller.equals(event.context.player) &&
                         !card.booted,
                     cardType: 'dude',
                     gameAction: 'boot',
