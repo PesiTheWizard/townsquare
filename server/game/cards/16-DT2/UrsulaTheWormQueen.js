@@ -23,7 +23,7 @@ class UrsulaTheWormQueen extends DudeCard {
                     controller: 'any', 
                     condition: card => card.parent &&
                         card.parent !== this &&
-                        card.parent.owner === this.controller &&
+                        card.parent.owner.equals(this.controller) &&
                         card.hasKeyword('hex') 
                 },
                 cardType: ['spell']
