@@ -25,7 +25,7 @@ class EncroachingDarkness extends OutfitCard {
                     activePromptTitle: 'Choose an opposing dude',
                     waitingPromptTitle: 'Waiting for opponent to select a dude',
                     cardCondition: card => card.location === 'play area' &&
-                        card.controller !== this.controller &&
+                        !card.controller.equals(this.controller) &&
                         card.value < context.costs.boot.value &&
                         card.isInSameLocation(context.costs.boot),
                     cardType: 'dude',
