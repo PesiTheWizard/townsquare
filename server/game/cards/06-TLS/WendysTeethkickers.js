@@ -16,7 +16,7 @@ class WendysTeethkickers extends GoodsCard {
             },
             cost: ability.costs.bootSelf(),
             actionContext: { card: this.parent, gameAction: 'unboot' },
-            message: context =>
+            message: context => 
                 this.game.addMessage('{0} uses {1} to give {2} +1 influence and unboot them', context.player, this, this.parent),
             handler: context => {
                 this.untilEndOfRound(context.ability, ability => ({
