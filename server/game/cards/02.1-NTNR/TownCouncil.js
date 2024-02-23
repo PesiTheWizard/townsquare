@@ -13,8 +13,8 @@ class TownCouncil extends DeedCard {
                 cardCondition: { location: 'play area', controller: 'current' },
                 cardType: ['dude']
             },
-            message: context =>
-                this.game.addMessage('{0} uses {1} to give {2} +3 influence until after next Noon play',
+            message: context => 
+                this.game.addMessage('{0} uses {1} to give {2} +3 influence until after next Noon play', 
                     context.player, this, context.target),
             handler: context => {
                 this.lastingEffect(context.ability, ability => ({
