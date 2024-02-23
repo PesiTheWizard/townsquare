@@ -15,8 +15,8 @@ class JusticeInExile extends OutfitCard {
                 const choosingPlayer = context.player.isCheatin() ? opponent : context.player;
                 context.ability.selectAnotherTarget(choosingPlayer, context, {
                     activePromptTitle: 'Choose a card to raise bounty',
-                    cardCondition: {
-                        location: 'play area',
+                    cardCondition: { 
+                        location: 'play area', 
                         condition: card => card.controller.equals(opponent)
                     },
                     cardType: 'dude',
@@ -60,7 +60,7 @@ class JusticeInExile extends OutfitCard {
                     this.game.addMessage('{0} uses {1} to gain 2 GR', context.player, this);
                 }
             }
-        });
+        });        
     }
 
     jieReactCondition(event) {
