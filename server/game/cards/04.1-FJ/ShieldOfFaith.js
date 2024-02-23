@@ -16,11 +16,11 @@ class ShieldOfFaith extends SpellCard {
                         ability.effects.cannotBeAced('any', context => this.abilityProtectCondition(context)),
                         ability.effects.cannotBeDiscarded('any', context => this.abilityProtectCondition(context))
                     ]
-                }));
+                })); 
                 this.game.addMessage('{0} uses {1} to prevent Dudes to be aced or discarded during this shootout, ' +
-                    'except as a casualty for losing the round or due to their owner\'s card abilities or traits', context.player, this, context.target);
-                this.game.resolveGameAction(GameActions.decreaseCasualties({
-                    player: context.player,
+                    'except as a casualty for losing the round or due to their owner\'s card abilities or traits', context.player, this, context.target);       
+                this.game.resolveGameAction(GameActions.decreaseCasualties({ 
+                    player: context.player, 
                     amount: 1
                 }), context).thenExecute(() => {
                     this.game.addMessage('{0} uses {1} to reduce their casualties this round by 1', context.player, this);
