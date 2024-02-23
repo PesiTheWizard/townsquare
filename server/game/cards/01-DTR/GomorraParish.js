@@ -9,8 +9,8 @@ class GomorraParish extends DeedCard {
                 ability.costs.bootSelf(),
                 ability.costs.ace(card => card.location === 'hand' && card.controller.equals(this.controller))
             ],
-            message: context => this.game.addMessage('{0} uses {1} and aces {2} from hand to gain 1 GR',
-                context.player, this, context.costs.ace),
+            message: context => 
+                this.game.addMessage('{0} uses {1} and aces {2} from hand to gain 1 GR', context.player, this, context.costs.ace),
             handler: context => context.player.modifyGhostRock(1)
         });
     }
