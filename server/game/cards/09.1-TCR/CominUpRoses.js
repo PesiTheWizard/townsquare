@@ -7,9 +7,9 @@ class CominUpRoses extends ActionCard {
             playType: ['resolution'],
             target: {
                 activePromptTitle: 'Choose a card',
-                cardCondition: {
+                cardCondition: { 
                     condition: card => card.location === 'draw hand' && card.controller.equals(this.controller) &&
-                        card.controller.drawHand.every(drawHandCard => card === drawHandCard || card.value !== drawHandCard.value)
+                        card.controller.drawHand.every(drawHandCard => card === drawHandCard || card.value !== drawHandCard.value) 
                 },
                 cardType: ['dude', 'deed', 'goods', 'spell', 'action']
             },
@@ -24,7 +24,7 @@ class CominUpRoses extends ActionCard {
             playType: ['cheatin resolution'],
             target: {
                 activePromptTitle: 'Choose up to 2 cards',
-                cardCondition: {
+                cardCondition: { 
                     location: 'draw hand'
                 },
                 cardType: ['dude', 'deed', 'goods', 'spell', 'action'],
@@ -62,7 +62,7 @@ class CominUpRoses extends ActionCard {
             effect: ability.effects.setSuit(arg, this.uuid)
         }), 'draw hand');
         if(this.cheatinResContext) {
-            this.game.addMessage('{0} uses {1} to change suit and value of {2} in draw hand to {3}of{4}',
+            this.game.addMessage('{0} uses {1} to change suit and value of {2} in draw hand to {3}of{4}', 
                 player, this, cardToChange, cardToChange.value, arg);
         } else {
             this.game.addMessage('{0} uses {1} to change suit of {2} in draw hand to {3}', player, this, cardToChange, arg);
