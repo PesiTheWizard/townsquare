@@ -9,12 +9,12 @@ class TheExtraBet extends DeedCard {
                 onPlayersAntedForLowball: () => this.controller.getSpendableGhostRock() >= 1
             },
             cost: ability.costs.bootSelf(),
-            message: context =>
+            message: context => 
                 this.game.addMessage('{0} uses {1} to ante additional GR for lowball', context.player, this),
             handler: context => {
                 context.player.spendGhostRock(1);
                 context.event.gamblingPhase.lowballPot += 1;
-                this.game.onceConditional('onCardsDrawn', {
+                this.game.onceConditional('onCardsDrawn', { 
                     condition: event => event.reason === 'lowball' && event.player.equals(context.player)
                 }, () => {
                     this.game.promptForSelect(context.player, {
