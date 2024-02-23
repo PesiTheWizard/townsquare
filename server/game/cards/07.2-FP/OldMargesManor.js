@@ -22,19 +22,19 @@ class OldMargesManor extends DeedCard {
             cost: ability.costs.bootSelf(),
             target: {
                 activePromptTitle: 'Choose a card to transfer GR from',
-                cardCondition: {
-                    location: 'play area',
-                    controller: 'current',
+                cardCondition: { 
+                    location: 'play area', 
+                    controller: 'current', 
                     condition: card => card.ghostrock && card !== this
                 },
                 cardType: ['dude', 'deed', 'goods', 'spell', 'action']
             },
-            message: context =>
+            message: context => 
                 this.game.addMessage('{0} uses {1} to transfer all GR from {2} before making a play', 
                     context.player, this, context.target),
             handler: context => {
                 this.game.transferGhostRock({ from: context.target, to: this, amount: context.target.ghostrock });
-                this.game.makePlayOutOfOrder(context.player, this);
+                this.game.makePlayOutOfOrder(context.player, this);               
             }
         });
         this.action({
