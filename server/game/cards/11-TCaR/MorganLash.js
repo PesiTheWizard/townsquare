@@ -20,7 +20,7 @@ class MorganLash extends DudeCard {
         this.reaction({
             title: 'Morgan Lash',
             when: {
-                onShooterPicked: event => event.card.controller === this.controller
+                onShooterPicked: event => event.card.controller.equals(this.controller)
             },
             message: context => 
                 this.game.addMessage('{0} uses {1} to raise {2}\'s bounty by 2', context.player, this, context.event.card),

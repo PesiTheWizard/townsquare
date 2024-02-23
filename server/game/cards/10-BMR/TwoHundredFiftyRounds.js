@@ -8,7 +8,7 @@ class TwoHundredFiftyRounds extends TechniqueCard {
         this.techniqueAction({
             title: 'Shootout: Two Hundred Fifty Rounds',
             playType: ['shootout'],
-            combo: context => context.kfDude.locationCard && context.kfDude.locationCard.controller === this.owner,
+            combo: context => context.kfDude.locationCard && context.kfDude.locationCard.controller.equals(this.owner),
             onSuccess: context => {
                 this.game.resolveGameAction(GameActions.decreaseCasualties({ 
                     player: context.player,

@@ -7,7 +7,7 @@ class GrimoiresAndMore extends DeedCard {
         this.reaction({
             title: 'React: Grimoires & More',
             when: {
-                onCardEntersPlay: event => event.card.controller === this.controller && event.card.getType() === 'dude' && event.card.hasKeyword('huckster')
+                onCardEntersPlay: event => event.card.controller.equals(this.controller) && event.card.getType() === 'dude' && event.card.hasKeyword('huckster')
             },
             cost: ability.costs.bootSelf(),
             handler: context => {

@@ -32,8 +32,8 @@ class ShieldOfFaith extends SpellCard {
 
     abilityProtectCondition(context) {
         return context && (
-            (!context.isCasualty && context.player !== context.card.controller) || 
-            (context.shootout && context.shootout.loser !== context.card.controller)
+            (!context.isCasualty && !context.player.equals(context.card.controller)) ||
+            (context.shootout && !context.shootout.loser.equals(context.card.controller))
         );
     }
 }

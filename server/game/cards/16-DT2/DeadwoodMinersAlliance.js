@@ -17,7 +17,7 @@ class DeadwoodMinersAlliance extends OutfitCard {
             cost: [
                 ability.costs.bootSelf(),
                 ability.costs.boot(card => card.location === 'play area' &&
-                    card.controller === this.controller &&
+                    card.controller.equals(this.controller) &&
                     card.getType() === 'dude' &&
                     card.locationCard && card.locationCard.owner !== this.owner)
             ],

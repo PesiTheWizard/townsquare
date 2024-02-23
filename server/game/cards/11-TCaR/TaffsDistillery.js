@@ -7,7 +7,7 @@ class TaffsDistillery extends DeedCard {
         this.reaction({
             title: 'React: Taff\'s Distillery',
             when: {
-                onJobSuccessful: event => event.context.player === this.controller && 
+                onJobSuccessful: event => event.context.player.equals(this.controller) &&
                     !['outfit', 'legend'].includes(event.context.source.getType()) &&
                     event.job.mark !== this.controller.getOutfitCard()
 

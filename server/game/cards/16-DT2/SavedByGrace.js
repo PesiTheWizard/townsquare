@@ -9,7 +9,7 @@ class SavedByGrace extends OutfitCard {
             cost: [
                 ability.costs.bootSelf(),
                 ability.costs.boot(card => card.location === 'play area' &&
-                    card.controller === this.controller &&
+                    card.controller.equals(this.controller) &&
                     card.getType() === 'dude' &&
                     card.hasKeyword('blessed') &&
                     !card.isAtHome())
@@ -40,7 +40,7 @@ class SavedByGrace extends OutfitCard {
                 ).thenExecute(() => {
                     context.ability.selectAnotherTarget(context.player, context, {
                         activePromptTitle: 'Select a card to shuffle to deck',
-                        cardCondition: card => card.controller === context.player && card.location === 'hand',
+                        cardCondition: card => card.controller.equals(context.player) && card.location === 'hand',
                         onSelect: (player, cardToShuffle) => {
                             if(context.player.moveCardWithContext(cardToShuffle, 'draw deck', context, true)) {
                                 this.game.addMessage('{0} uses {1} to shuffle a card from their hand to deck', player, this);

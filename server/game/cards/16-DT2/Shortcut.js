@@ -29,7 +29,7 @@ class Shortcut extends ActionCard {
             title: 'React: Prevent booting',
             when: {
                 onDudeJoiningPosse: event => 
-                    event.card.controller === this.owner &&
+                    event.card.controller.equals(this.owner) &&
                     event.card.isAdjacent(this.game.shootout.shootoutLocation.uuid) &&
                     event.card.requirementsToJoinPosse().needToBoot
             },

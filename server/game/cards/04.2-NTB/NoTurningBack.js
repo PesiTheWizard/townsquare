@@ -8,7 +8,7 @@ class NoTurningBack extends ActionCard {
             playType: ['noon'],
             target: {
                 activePromptTitle: 'Choose a dude to ace',
-                cardCondition: { location: 'play area', controller: 'current', condition: card => card.owner === this.controller },
+                cardCondition: { location: 'play area', controller: 'current', condition: card => card.owner.equals(this.controller) },
                 cardType: ['dude'],
                 gameAction: 'ace'
             },
@@ -28,7 +28,7 @@ class NoTurningBack extends ActionCard {
                 this.game.promptForSelect(context.player, {
                     activePromptTitle: 'Choose a dude to ace',
                     waitingPromptTitle: 'Waiting for opponent to choose a dude',
-                    cardCondition: card => card.location === 'play area' && card.controller === context.player && card.owner === context.player,
+                    cardCondition: card => card.location === 'play area' && card.controller.equals(context.player) && card.owner.equals(context.player),
                     cardType: 'dude',
                     gameAction: 'ace',
                     onSelect: (player, card) => {

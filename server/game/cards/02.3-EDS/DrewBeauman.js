@@ -15,7 +15,7 @@ class DrewBeauman extends DudeCard {
                     activePromptTitle: 'Select a gadget',
                     waitingPromptTitle: 'Waiting for opponent to select gadget',
                     cardCondition: card => card.location === 'hand' &&
-                        card.controller === this.controller &&
+                        card.controller.equals(this.controller) &&
                         card.hasKeyword('gadget'),
                     cardType: 'goods',
                     onSelect: (player, card) => {

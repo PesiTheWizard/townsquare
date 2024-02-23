@@ -15,7 +15,7 @@ class PhilipSwinford extends DudeCard {
                             promptTitle: this.title,
                             activePromptTitle: 'Select a card to discard',
                             waitingPromptTitle: 'Waiting for opponent to discard a card',
-                            cardCondition: card => card.location === 'hand' && card.controller === this.controller,
+                            cardCondition: card => card.location === 'hand' && card.controller.equals(this.controller),
                             onSelect: (p, card) => {
                                 this.game.resolveGameAction(GameActions.discardCard({ card: card }), context).thenExecute(() => {
                                     this.game.resolveGameAction(GameActions.drawCards({ player: p, amount: 1 }), context).thenExecute(() => {

@@ -9,7 +9,7 @@ class PoliteInquiries extends ActionCard {
             playType: ['noon'],
             cost: ability.costs.boot(card =>
                 card.location === 'play area' &&
-                card.controller === this.owner &&
+                card.controller.equals(this.owner) &&
                 card.getType() === 'dude' &&
                 !card.isAtHome()),
             handler: context => {

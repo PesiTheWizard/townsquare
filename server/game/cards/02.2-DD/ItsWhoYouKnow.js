@@ -41,7 +41,7 @@ class ItsWhoYouKnow extends ActionCard {
                     waitingPromptTitle: 'Waiting for opponent to select dude',
                     cardCondition: card => card.getType() === 'dude' && card.location === 'play area' &&
                             card.gamelocation === context.target.gamelocation &&
-                            card.controller !== this.controller,
+                            !card.controller.equals(this.controller),
                     cardType: 'dude',
                     gameAction: 'callout',
                     onSelect: (player, card) => {

@@ -19,7 +19,7 @@ class PointBlank extends ActionCard {
                     activePromptTitle: 'Select a dude to ace',
                     waitingPromptTitle: 'Waiting for opponent to select a dude',
                     cardCondition: card => card.location === 'play area' &&
-                        card.controller !== this.controller &&
+                        !card.controller.equals(this.controller) &&
                         card.isParticipating() &&
                         card.bullets < context.costs.boot.bullets,
                     cardType: 'dude',

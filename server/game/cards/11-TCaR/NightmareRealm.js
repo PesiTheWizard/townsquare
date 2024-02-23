@@ -24,7 +24,7 @@ class NightmareRealm extends SpellCard {
                     this.game.addMessage('{0} uses {1} to prevent {2} from leaving this round and give them -1 bullets and -1 value each round', 
                         context.player, this, context.target);  
                     let eventHandler = event => {
-                        if(this.game.shootout && event.player === this.game.shootout.leaderPlayer) {
+                        if(this.game.shootout && event.player.equals(this.game.shootout.leaderPlayer)) {
                             this.applyAbilityEffect(context.ability, ability => ({
                                 match: context.target,
                                 effect: [
@@ -41,7 +41,7 @@ class NightmareRealm extends SpellCard {
                     activePromptTitle: 'Select your dude',
                     waitingPromptTitle: 'Waiting for opponent to select dude',
                     cardCondition: card => card.location === 'play area' &&
-                        card.controller === this.controller &&
+                        card.controller.equals(this.controller) &&
                         card.isParticipating(),
                     cardType: 'dude',
                     onSelect: (player, dude) => {

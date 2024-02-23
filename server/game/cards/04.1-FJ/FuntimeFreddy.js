@@ -45,7 +45,7 @@ class FuntimeFreddy extends DudeCard {
                                             activePromptTitle: 'Select a dude for Hex',
                                             waitingPromptTitle: 'Waiting for opponent to select dude',
                                             cardCondition: card => card.location === 'play area' &&
-                                                    card.controller === this.controller &&
+                                                    card.controller.equals(this.controller) &&
                                                     card.hasKeyword('huckster'),
                                             cardType: 'dude',
                                             onSelect: (player, huckster) => {

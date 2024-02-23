@@ -10,7 +10,7 @@ class EGui extends DudeCard {
             triggerBefore: true,
             when: {
                 onCardDiscarded: event => event.card === this && event.isUpkeep &&
-                    this.isAtDeed() && this.locationCard.owner !== this.controller
+                    this.isAtDeed() && !this.locationCard.owner.equals(this.controller)
             },
             message: context => 
                 this.game.addMessage('{0} uses {1} to boot {2} and gain its production ({3} GR )', 

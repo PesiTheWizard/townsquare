@@ -13,7 +13,7 @@ class DecimatorArray extends GoodsCard {
                     activePromptTitle: 'Select a Mad Scientist to unboot',
                     waitingPromptTitle: 'Waiting for opponent to select card',
                     cardCondition: card => card.location === 'play area' && 
-                        card.controller === this.controller && 
+                        card.controller.equals(this.controller) &&
                         card.hasKeyword('mad scientist'),
                     cardType: 'dude',
                     onSelect: (player, card) => {

@@ -8,7 +8,7 @@ class GetOffMyLand extends ActionCard {
         this.reaction({
             title: 'React: Get Off My Land!',
             when: {
-                onDudeMoved: event => event.card.controller !== this.owner &&
+                onDudeMoved: event => !event.card.controller.equals(this.owner) &&
                     this.owner.findLocation(event.target)
             },
             cost: ability.costs.payGhostRock(context => context.event.card.influence),

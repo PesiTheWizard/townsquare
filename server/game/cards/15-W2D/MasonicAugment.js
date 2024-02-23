@@ -8,8 +8,8 @@ class MasonicAugment extends ActionCard {
             title: 'Noon/Shootout: Masonic Augment',
             playType: ['noon', 'shootout'],
             cost: ability.costs.discardFromPlay(card => card.getType() === 'spell' &&
-                card.controller === this.controller &&
-                card.owner === this.controller),
+                card.controller.equals(this.controller) &&
+                card.owner.equals(this.controller)),
             target: {
                 activePromptTitle: 'Choose your dude',
                 cardCondition: { 

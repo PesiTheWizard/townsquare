@@ -14,7 +14,7 @@ class FieryRhetoric extends SpellCard {
                 message: context => this.game.addMessage('{0} plays {1} on {2}', context.player, this, context.target),
                 onSuccess: (job, context) => {
                     const numOfWantedDudes = this.game.getNumberOfCardsInPlay(card =>
-                        card.controller !== context.player &&
+                        !card.controller.equals(context.player) &&
                         card.getType() === 'dude' &&
                         card.isWanted());
                     this.applyAbilityEffect(context.ability, ability => ({

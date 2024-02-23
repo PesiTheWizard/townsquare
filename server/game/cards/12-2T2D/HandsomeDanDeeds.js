@@ -13,7 +13,7 @@ class HandsomeDanDeeds extends DudeCard {
                 if(!thisLocationCard) {
                     return false;
                 }
-                return thisLocationCard.owner === context.player && 
+                return thisLocationCard.owner.equals(context.player) &&
                     this.isAtDeed('in-town') &&
                     thisLocationCard.control < 2;
             },

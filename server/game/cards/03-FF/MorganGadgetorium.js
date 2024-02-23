@@ -7,7 +7,7 @@ class MorganGadgetorium extends OutfitCard {
             title: 'React: Morgan Gadgetorium',
             triggerBefore: true,
             when: {
-                onPullForSkill: event => event.player === this.owner
+                onPullForSkill: event => event.player.equals(this.owner)
             },
             cost: ability.costs.bootSelf(),
             message: context => 

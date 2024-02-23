@@ -8,7 +8,7 @@ class SmithRobardsTradeShow extends OutfitCard {
             cost: [
                 ability.costs.bootSelf(),
                 ability.costs.boot(card =>
-                    card.controller === this.owner &&
+                    card.controller.equals(this.owner) &&
                     card.location === 'play area' &&
                     card.getType() === 'goods' &&
                     card.isGadget()
@@ -22,8 +22,8 @@ class SmithRobardsTradeShow extends OutfitCard {
                     title: this.title
                 });
                 const gadgetLocationCard = context.costs.boot.locationCard;
-                if(gadgetLocationCard && gadgetLocationCard.controller === this.owner && 
-                    gadgetLocationCard.owner !== this.owner) {
+                if(gadgetLocationCard && gadgetLocationCard.controller.equals(this.owner) &&
+                    !gadgetLocationCard.owner.equals(this.owner)) {
                     this.applyAbilityEffect(context.ability, ability => ({
                         match: context.costs.boot,
                         effect: ability.effects.modifyControl(1)

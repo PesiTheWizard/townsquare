@@ -6,7 +6,7 @@ class Randall extends DudeCard {
             condition: () => this.location === 'play area' &&
                 this.game.currentPhase !== 'setup' &&
                 this.game.getDudesAtLocation(this.gamelocation).length > 2,
-            match: player => player === this.controller,
+            match: player => player.equals(this.controller),
             effect: ability.effects.modifyHandSize(1)
         });
     }

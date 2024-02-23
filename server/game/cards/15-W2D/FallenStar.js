@@ -8,12 +8,12 @@ class FallenStar extends ActionCard {
             triggerBefore: true,
             title: 'Fallen Star',
             when: {
-                onTargetsChosen: event => event.player !== this.owner &&
+                onTargetsChosen: event => !event.player.equals(this.owner) &&
                     event.ability.playTypePlayed() === 'shootout' &&
                     (event.targets && event.targets.anySelection(selection => (
-                        selection.choosingPlayer !== this.controller &&
+                        !selection.choosingPlayer.equals(this.controller) &&
                         selection.value.getType() === 'dude' &&
-                        selection.value.controller === this.controller
+                        selection.value.controller.equals(this.controller)
                     )) || 
                     (event.cards && this.someMatchesCondition(event.cards, card => card && card.getType() === 'dude')))
             },
@@ -61,7 +61,7 @@ class FallenStar extends ActionCard {
     }
 
     isEligibleTarget(card, context) {
-        if(card.controller !== this.controller || card.getType() !== 'dude') {
+        if(!card.controller.equals(this.controller) || card.getType() !== 'dude') {
             return false;
         }
         if(context.event.cards) {
@@ -74,7 +74,7 @@ class FallenStar extends ActionCard {
         return (
             !context.event.targets.getTargets().includes(card) &&
             selection && selection.isEligible(card) &&
-            card.controller === this.controller &&
+            card.controller.equals(this.controller) &&
             card.getType() === 'dude'
         );
     }

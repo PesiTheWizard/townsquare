@@ -6,7 +6,7 @@ class TheWhateleyEstate2 extends DeedCard {
         this.reaction({
             when: {
                 onDudeEnteredLocation: event => event.gameLocation.locationCard === this &&
-                    event.card.controller !== this.owner
+                    !event.card.controller.equals(this.owner)
             },
             triggeringPlayer: 'owner',
             handler: context => {

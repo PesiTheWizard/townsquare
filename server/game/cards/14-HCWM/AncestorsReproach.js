@@ -10,7 +10,7 @@ class AncestorsReproach extends SpellCard {
             playType: ['shootout'],
             cost: [
                 ability.costs.bootSelf(),
-                ability.costs.ace(card => card.location === 'hand' && card.controller === this.controller)
+                ability.costs.ace(card => card.location === 'hand' && card.controller.equals(this.controller))
             ],
             difficulty: 8,
             onSuccess: (context) => {

@@ -8,7 +8,7 @@ class FiveAcesGamblingHall extends DeedCard {
         this.reaction({
             title: 'React: Five Aces Gambling Hall',
             when: {
-                onPossesFormed: () => this.game.shootout && this.game.shootout.mark.owner === this.controller
+                onPossesFormed: () => this.game.shootout && this.game.shootout.mark.owner.equals(this.controller)
             },
             cost: ability.costs.bootSelf(),
             target: {

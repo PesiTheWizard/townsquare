@@ -13,7 +13,7 @@ class GrimServantODeath extends ActionCard {
                     controller: 'any', 
                     condition: card => !card.isParticipating() &&
                         card.isAtHome() && this.game.shootout &&
-                        card.controller === this.game.shootout.opposingPlayer
+                        card.controller.equals(this.game.shootout.opposingPlayer)
                 },
                 cardType: ['dude']
             },
@@ -30,7 +30,7 @@ class GrimServantODeath extends ActionCard {
                         context.ability.selectAnotherTarget(context.player, context, {
                             activePromptTitle: 'Select your dude',
                             waitingPromptTitle: 'Waiting for opponent to select card',
-                            cardCondition: card => card.isParticipating() && card.controller === context.player,
+                            cardCondition: card => card.isParticipating() && card.controller.equals(context.player),
                             cardType: 'dude',
                             onSelect: (player, card) => {
                                 this.applyAbilityEffect(context.ability, ability => ({

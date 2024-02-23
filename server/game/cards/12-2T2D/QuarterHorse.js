@@ -7,7 +7,7 @@ class QuarterHorse extends GoodsCard {
             triggerBefore: true,
             when: {
                 onDudesReturnAfterJob: event => event.job.jobSuccessful &&
-                    this.parent.controller === event.job.leaderPlayer &&
+                    this.parent.controller.equals(event.job.leaderPlayer) &&
                     event.job.mark !== this.parent.controller.getOutfitCard() 
             },
             cost: ability.costs.bootSelf(),

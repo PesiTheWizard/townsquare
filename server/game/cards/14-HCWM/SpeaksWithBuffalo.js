@@ -46,7 +46,7 @@ class SpeaksWithBuffalo extends DudeCard {
                         numCards: 2,
                         multiSelect: true,
                         mode: 'exactly',
-                        cardCondition: card => card.location === 'hand' && card.controller === this.controller,
+                        cardCondition: card => card.location === 'hand' && card.controller.equals(this.controller),
                         onSelect: (p, cards) => {
                             p.discardCards(cards, () => {
                                 this.game.addMessage('{0} draws 2 cards and then discards {1} thanks to the {2}', p, cards, this);

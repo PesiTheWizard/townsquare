@@ -14,7 +14,7 @@ class StanFredricks extends DudeCard {
                     context.ability.selectAnotherTarget(context.player, context, {
                         activePromptTitle: 'Select a dude to move bounty to',
                         cardCondition: card => card.location === 'play area' &&
-                            card.controller !== this.controller &&
+                            !card.controller.equals(this.controller) &&
                             card.isParticipating(),
                         cardType: 'dude',
                         gameAction: 'addBounty',

@@ -3,7 +3,7 @@ const DudeCard = require('../../dudecard.js');
 class PostATron extends DudeCard {
     constructor(owner, cardData) {
         super(owner, cardData);
-        this.game.onceConditional('onSetupDrawDeckShuffled', { condition: event => event.player === this.owner }, () => {
+        this.game.onceConditional('onSetupDrawDeckShuffled', { condition: event => event.player.equals(this.owner) }, () => {
             if(this.location === 'play area') {
                 this.owner.inventGadget(this);
             }

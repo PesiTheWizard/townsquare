@@ -19,7 +19,7 @@ class TheSanatorium extends OutfitCard {
                     activePromptTitle: 'Choose an opposing dude',
                     waitingPromptTitle: 'Waiting for opponent to select dude',
                     cardCondition: card => card.location === 'play area' &&
-                        card.controller !== this.owner &&
+                        !card.controller.equals(this.owner) &&
                         card.isNearby(context.target.gamelocation),
                     cardType: 'dude',
                     onSelect: (player, card) => {

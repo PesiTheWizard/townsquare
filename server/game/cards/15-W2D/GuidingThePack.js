@@ -17,7 +17,7 @@ class GuidingThePack extends SpellCard {
                     context.ability.selectAnotherTarget(context.player, context, {
                         activePromptTitle: 'Choose a card to boot',
                         cardCondition: card => card.isParticipating() &&
-                            card.controller !== context.player,
+                            !card.controller.equals(context.player),
                         gameAction: 'boot',
                         onSelect: (player, card) => {
                             this.game.resolveGameAction(GameActions.bootCard({ card }), context).thenExecute(() => {
@@ -32,7 +32,7 @@ class GuidingThePack extends SpellCard {
                     context.ability.selectAnotherTarget(context.player, context, {
                         activePromptTitle: 'Choose your dude',
                         cardCondition: card => card.isParticipating() &&
-                            card.controller === context.player,
+                            card.controller.equals(context.player),
                         cardType: 'dude',
                         onSelect: (player, card) => {
                             this.applyAbilityEffect(context.ability, ability => ({

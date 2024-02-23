@@ -18,7 +18,7 @@ class F1Burch extends DudeCard {
                     cardCondition: card => card.location === 'play area' &&
                         card.uuid !== this.gamelocation &&
                         !card.isOutOfTown() &&
-                        this.game.getDudesAtLocation(card.uuid).some(dude => dude.controller === context.player),
+                        this.game.getDudesAtLocation(card.uuid).some(dude => dude.controller.equals(context.player)),
                     onSelect: (player, location) => {
                         this.game.resolveGameAction(GameActions.moveDude({ 
                             card: this, 

@@ -18,7 +18,7 @@ class FanninTheHammer extends ActionCard {
                         context.ability.selectAnotherTarget(context.player, context, {
                             activePromptTitle: 'Select dudes',
                             waitingPromptTitle: 'Waiting for opponent to select dudes',
-                            cardCondition: card => card.controller !== this.controller && card.isParticipating(),
+                            cardCondition: card => !card.controller.equals(this.controller) && card.isParticipating(),
                             cardType: 'dude',
                             multiSelect: true,
                             numCards: context.target.bullets,

@@ -21,7 +21,7 @@ class RunEmDown extends ActionCard {
                     waitingPromptTitle: 'Waiting for opponent to select mounted dudes',
                     multiSelect: true,
                     numCards: 0,
-                    cardCondition: card => card.controller === context.player && card.gamelocation === context.target.uuid && card.hasHorse(),
+                    cardCondition: card => card.controller.equals(context.player) && card.gamelocation === context.target.uuid && card.hasHorse(),
                     cardType: 'dude',
                     onSelect: (player, cards) => {
                         context.ability.selectAnotherTarget(player, context, {

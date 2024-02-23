@@ -14,7 +14,7 @@ class SethBullock extends DudeCard {
         this.reaction({
             title: 'React: Seth Bullock',
             when: {
-                onCardPlayed: event => event.player === this.controller && 
+                onCardPlayed: event => event.player.equals(this.controller) &&
                     event.ability.playTypePlayed() === 'cheatin resolution' &&
                     event.card.getType() === 'action'
             },

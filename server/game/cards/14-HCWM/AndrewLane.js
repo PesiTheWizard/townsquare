@@ -31,7 +31,7 @@ class AndrewLane extends LegendCard {
                     activePromptTitle: 'Select your dude to receive weapon',
                     waitingPromptTitle: 'Waiting for opponent to select dude',
                     cardCondition: card => card.isParticipating() && 
-                        card.controller === context.player &&
+                        card.controller.equals(context.player) &&
                         !card.isToken(),
                     cardType: 'dude',
                     onSelect: (player, dude) => {

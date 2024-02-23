@@ -17,7 +17,7 @@ class Geronimo extends DudeCard {
                 cardCondition: { 
                     location: 'play area', 
                     controller: 'any', 
-                    condition: card => card.owner !== this.controller &&
+                    condition: card => !card.owner.equals(this.controller) &&
                         card.parent && card.parent.gamelocation === this.gamelocation 
                 },
                 gameAction: 'discard',

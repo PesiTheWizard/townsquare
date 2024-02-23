@@ -4,7 +4,7 @@ const GameActions = require('../../GameActions/index.js');
 class TeleportationDevice extends GoodsCard {
     setupCardAbilities(ability) {
         this.attachmentRestriction(card => 
-            card.controller === this.controller &&
+            card.controller.equals(this.controller) &&
             card.getType() === 'deed'
         );
 

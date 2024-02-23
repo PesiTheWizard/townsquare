@@ -11,7 +11,7 @@ class SwordOfTheSpirit extends SpellCard {
                     activePromptTitle: 'Choose a dude',
                     waitingPromptTitle: 'Waiting for opponent to choose a dude',
                     cardCondition: card => card.location === 'play area' &&
-                        card.controller === this.controller &&
+                        card.controller.equals(this.controller) &&
                         card.hasAttachmentWithKeywords(['melee', 'weapon']),
                     cardType: 'dude',
                     onSelect: (player, dudeWithWeapon) => {

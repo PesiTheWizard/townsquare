@@ -37,7 +37,7 @@ class Belligerence extends ActionCard {
                 ability.costs.payGhostRock(1),
                 ability.costs.raiseBounty(card =>
                     card.location === 'play area' &&
-                    card.controller === this.owner &&
+                    card.controller.equals(this.owner) &&
                     card.booted, 'unboot')
             ],
             message: context => 

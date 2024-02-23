@@ -10,7 +10,7 @@ class TheArsenal extends OutfitCard {
             cost: ability.costs.boot(card =>
                 card.location === 'play area' &&
                 card.parent &&
-                card.controller === this.owner &&
+                card.controller.equals(this.owner) &&
                 (card.isGadget() || card.isSpell())
             ),
             message: context => 
@@ -20,7 +20,7 @@ class TheArsenal extends OutfitCard {
                     activePromptTitle: 'Select dude to Call Out',
                     waitingPromptTitle: 'Waiting for opponent to select dude',
                     cardCondition: card => card.location === 'play area' && 
-                        card.controller !== context.player &&
+                        !card.controller.equals(context.player) &&
                         card.getType() === 'dude' &&
                         card.gamelocation === context.costs.boot.gamelocation &&
                         (card.isWanted() || !card.booted),

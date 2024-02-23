@@ -5,7 +5,7 @@ class TownCouncil extends DeedCard {
         this.reaction({
             title: 'Town Council',
             when: {
-                onLowballWinnerDetermined: event => event.winner === this.controller
+                onLowballWinnerDetermined: event => event.winner.equals(this.controller)
             },
             cost: ability.costs.bootSelf(),
             target: {

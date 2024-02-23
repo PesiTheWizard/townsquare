@@ -5,14 +5,14 @@ class Intercession extends SpellCard {
     setupCardAbilities(ability) {
         this.spellReaction({
             when: {
-                onDudeBecomesStud: event => event.card.controller !== this.controller
+                onDudeBecomesStud: event => !event.card.controller.equals(this.controller)
             },
             cost: ability.costs.bootSelf(),
             difficulty: 5,
             target: {
                 activePromptTitle: 'Select your dude',
                 waitingPromptTitle: 'Waiting for opponent to select a dude',
-                cardCondition: card => card.controller === this.controller && card.location === 'play area',
+                cardCondition: card => card.controller.equals(this.controller) && card.location === 'play area',
                 cardType: 'dude'
             },
             onSuccess: context => {
@@ -33,7 +33,7 @@ class Intercession extends SpellCard {
                 myDude: {
                     activePromptTitle: 'Select your dude',
                     waitingPromptTitle: 'Waiting for opponent to select a dude',
-                    cardCondition: card => card.location === 'play area' && card.getType() === 'dude' && card.isParticipating() && card.controller === this.controller
+                    cardCondition: card => card.location === 'play area' && card.getType() === 'dude' && card.isParticipating() && card.controller.equals(this.controller)
                 },
                 theirDude: {
                     activePromptTitle: 'Select an opposing dude',

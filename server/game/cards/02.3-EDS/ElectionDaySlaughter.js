@@ -15,7 +15,7 @@ class ElectionDaySlaughter extends ActionCard {
                     this.game.promptForSelect(opponent, {
                         activePromptTitle: 'Select a dude to unboot',
                         waitingPromptTitle: 'Waiting for opponent to select dude',
-                        cardCondition: card => card.location === 'play area' && card.controller === opponent && !card.locationCard.isOutOfTown(),
+                        cardCondition: card => card.location === 'play area' && card.controller.equals(opponent) && !card.locationCard.isOutOfTown(),
                         cardType: 'dude',
                         gameAction: 'unboot',
                         onSelect: (player, card) => {
@@ -37,7 +37,7 @@ class ElectionDaySlaughter extends ActionCard {
                     this.game.promptForSelect(opponent, {
                         activePromptTitle: 'Select a dude to ace',
                         waitingPromptTitle: 'Waiting for opponent to select dude',
-                        cardCondition: card => card.location === 'play area' && card.controller === opponent && !card.locationCard.isOutOfTown(),
+                        cardCondition: card => card.location === 'play area' && card.controller.equals(opponent) && !card.locationCard.isOutOfTown(),
                         cardType: 'dude',
                         gameAction: 'ace',
                         numCards: 1,

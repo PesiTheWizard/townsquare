@@ -36,7 +36,7 @@ class VirgilEarp extends DudeCard {
                 promptInfo: { type: 'info', message: `${this.currentBounties} bounties left` },
                 waitingPromptTitle: 'Waiting for opponent to select bounty',
                 cardCondition: card => card.location === 'play area' &&
-                        card.controller !== this.abilityContext.player &&
+                        !card.controller.equals(this.abilityContext.player) &&
                         card.isWanted() &&
                         card.isParticipating() &&
                         !this.chosenBounty.some(bounty => bounty.dude === card),

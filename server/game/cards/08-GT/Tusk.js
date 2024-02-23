@@ -19,7 +19,7 @@ class Tusk extends GoodsCard {
     }
 
     onAbilityTargetsResolution(targetResEvent) {
-        if(!targetResEvent.ability.isCardAbility() || targetResEvent.player !== this.controller.getOpponent() || 
+        if(!targetResEvent.ability.isCardAbility() || !targetResEvent.player.equals(this.controller.getOpponent()) || 
             this.isFullBlank() || this.isTraitBlank()) {
             return;
         }

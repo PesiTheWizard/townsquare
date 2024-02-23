@@ -12,7 +12,7 @@ class BabbleOn extends SpellCard {
                     event.context.source !== this &&
                     event.context.source.hasKeyword('miracle') &&
                     event.card.getType() === 'dude' &&
-                    event.card.controller === event.context.player
+                    event.card.controller.equals(event.context.player)
             },
             difficulty: 6,
             onSuccess: (context) => {
