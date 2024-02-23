@@ -10,7 +10,7 @@ class NotaryPublic extends DeedCard {
             target: {
                 activePromptTitle: 'Select Government or Public deed',
                 choosingPlayer: 'current',
-                cardCondition: { location: 'play area', controller: 'any', condition: card =>
+                cardCondition: { location: 'play area', controller: 'any', condition: card => 
                     (card.owner.equals(this.controller) || card.controller.equals(this.controller)) &&
                     card.hasOneOfKeywords(['Government', 'Public']) &&
                     this.isSameStreet(card) &&
@@ -47,11 +47,11 @@ class NotaryPublic extends DeedCard {
                                 activePromptTitle: 'Select a location',
                                 waitingPromptTitle: 'Waiting for opponent to select target location.',
                                 onSelect: (player, location) => {
-                                    this.game.resolveGameAction(GameActions.moveDude({
-                                        card: dude,
+                                    this.game.resolveGameAction(GameActions.moveDude({ 
+                                        card: dude, 
                                         targetUuid: location.uuid
-                                    }), context);
-                                    this.game.addMessage('{0} uses {1} to boot {2} and move {3} to {4}', player, this, context.target, dude, location);
+                                    }), context); 
+                                    this.game.addMessage('{0} uses {1} to boot {2} and move {3} to {4}', player, this, context.target, dude, location);        
                                     return true;
                                 }
                             });
