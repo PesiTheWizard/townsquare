@@ -34,7 +34,7 @@ class SwordOfTheSpirit extends SpellCard {
                                     ]
                                 }));  
                                 this.game.addMessage('{0} uses {1} to bless {2}\'s weapon. While they have {3}, they have +1 bullets, ' +
-                                    'become a stud, and cannot be affected by opposing spells', player, this, dudeWithWeapon, weapon);                          
+                                    'become a stud, and cannot be affected by opposing spells', player, this, dudeWithWeapon, weapon);                             
                                 return true;
                             }
                         });
