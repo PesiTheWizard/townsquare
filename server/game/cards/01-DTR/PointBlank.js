@@ -10,7 +10,7 @@ class PointBlank extends ActionCard {
             cost: [
                 ability.costs.boot(card =>
                     card.getType() === 'dude' &&
-                    card.isStud() &&
+                    card.isStud() && 
                     card.isParticipating()
                 )
             ],
@@ -27,7 +27,7 @@ class PointBlank extends ActionCard {
                     onSelect: (player, card) => {
                         this.game.resolveGameAction(GameActions.aceCard({ card }), context);
                         this.game.addMessage('{0} uses {1} to boot {2}, forcing {3} to ace {4}',
-                            this.controller, this, context.costs.boot, player, card);
+                            this.controller, this, context.costs.boot, player, card);                      
                         return true;
                     },
                     source: this
