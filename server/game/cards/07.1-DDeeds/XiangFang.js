@@ -7,8 +7,8 @@ class XiangFang extends DudeCard {
             when: {
                 onCardEntersPlay: event => event.card === this
             },
-            message: context =>
-                this.game.addMessage('{0} gains {1} GR thanks to the {2}',
+            message: context => 
+                this.game.addMessage('{0} gains {1} GR thanks to the {2}', 
                     context.player, this.locationCard.production, this),
             handler: context => {
                 context.player.modifyGhostRock(this.locationCard.production);
@@ -18,7 +18,7 @@ class XiangFang extends DudeCard {
                         effect: ability.effects.setProduction(0)
                     }), PhaseNames.Upkeep
                     );
-                    this.game.addMessage('{0} uses {1} to set {2}\'s production to 0',
+                    this.game.addMessage('{0} uses {1} to set {2}\'s production to 0', 
                         context.player, this, this.locationCard);
                 }
             }
