@@ -24,8 +24,8 @@ class OdditiesOfNature extends OutfitCard {
                     card.hasKeyword('abomination') &&
                     card.isInTownSquare())
             ],
-            message: context => this.game.addMessage('{0} uses {1} and boots {2} to gain 1 GR',
-                context.player, this, context.costs.boot),
+            message: context => 
+                this.game.addMessage('{0} uses {1} and boots {2} to gain 1 GR', context.player, this, context.costs.boot),
             handler: context => {
                 context.player.modifyGhostRock(1);
                 context.ability.selectAnotherTarget(context.player, context, {
@@ -38,7 +38,7 @@ class OdditiesOfNature extends OutfitCard {
                     onSelect: (player, card) => {
                         this.game.resolveGameAction(GameActions.bootCard({ card }), context).thenExecute(() => {
                             this.game.addMessage('{0} uses {1} to boot {2}', player, this, card);
-                        });
+                        });                        
                         return true;
                     },
                     source: this
