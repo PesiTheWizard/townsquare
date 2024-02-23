@@ -8,14 +8,14 @@ class BeyondTheVeil extends OutfitCard {
         this.persistentEffect({
             condition: () => true,
             match: card => card.location === 'play area' &&
-                card.getType() === 'dude' &&
+                card.getType() === 'dude' && 
                 card.locationCard &&
                 card.locationCard.hasAttachmentWithKeywords(['totem']),
             effect: [
                 ability.effects.modifyInfluence(1)
             ]
         });
-
+        
         this.action({
             title: 'Noon: Beyond the Veil',
             playType: ['noon'],
@@ -28,19 +28,19 @@ class BeyondTheVeil extends OutfitCard {
             ],
             target: {
                 activePromptTitle: 'Choose a dude to move',
-                cardCondition: {
-                    location: 'play area',
+                cardCondition: { 
+                    location: 'play area', 
                     controller: 'current'
                 },
                 cardType: ['dude'],
                 gameAction: 'moveDude'
             },
             handler: context => {
-                this.game.resolveGameAction(GameActions.moveDude({
+                this.game.resolveGameAction(GameActions.moveDude({ 
                     card: context.target, 
-                    targetUuid: context.costs.boot.gamelocation
+                    targetUuid: context.costs.boot.gamelocation 
                 }), context).thenExecute(() => {
-                    this.game.addMessage('{0} uses {1} and boots {2} to move {3} to {4}',
+                    this.game.addMessage('{0} uses {1} and boots {2} to move {3} to {4}', 
                         context.player, this, context.costs.boot, context.target, context.costs.boot.parent);
                 });
             }
