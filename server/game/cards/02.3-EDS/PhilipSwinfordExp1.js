@@ -24,7 +24,7 @@ class PhilipSwinfordExp1 extends DudeCard {
                                     return true;
                                 }
                             }); 
-                        });
+                        });           
                     },
                     source: this
                 });
