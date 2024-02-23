@@ -3,7 +3,7 @@ const DudeCard = require('../../dudecard.js');
 class AbuelitaEspinoza extends DudeCard {
     setupCardAbilities(ability) {
         this.persistentEffect({
-            condition: () => this.isAtDeed() &&
+            condition: () => this.isAtDeed() && 
                 !this.locationCard.owner.equals(this.controller),
             match: card => !card.equals(this) &&
                 card.location === 'play area' &&
