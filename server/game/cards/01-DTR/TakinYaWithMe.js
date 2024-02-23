@@ -12,8 +12,8 @@ class TakinYaWithMe extends ActionCard {
                     this.canBeTakenWithMe(event.player, event.shootout, event.casualtiesTaken)
             },
             handler: context => {
-                this.game.resolveGameAction(GameActions.increaseCasualties({
-                    player: context.player.getOpponent(),
+                this.game.resolveGameAction(GameActions.increaseCasualties({ 
+                    player: context.player.getOpponent(), 
                     amount: 1
                 }), context).thenExecute(() => {
                     this.game.addMessage('{0} uses {1} to take some of {2}\'s dudes or sidekicks with them', context.player, this, context.player.getOpponent());
