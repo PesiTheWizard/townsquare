@@ -11,7 +11,7 @@ class SpiritTrail extends SpellCard {
                     if(!card.isLocationCard()) {
                         return false;
                     }
-                    return this.game.findCardsInLocation(card.uuid,
+                    return this.game.findCardsInLocation(card.uuid, 
                         cardInLocation => ['09033', '24207'].includes(cardInLocation.code) && !cardInLocation.isNotPlanted()).length;
                 }, this.uuid)
             ]
@@ -25,7 +25,7 @@ class SpiritTrail extends SpellCard {
                 context.ability.selectAnotherTarget(context.player, context, {
                     activePromptTitle: 'Select a dude',
                     waitingPromptTitle: 'Waiting for opponent to select dude',
-                    cardCondition: card => card.location === 'play area' &&
+                    cardCondition: card => card.location === 'play area' && 
                         card.controller.equals(context.player) &&
                         card.gamelocation === this.gamelocation,
                     cardType: 'dude',
@@ -36,15 +36,15 @@ class SpiritTrail extends SpellCard {
                             waitingPromptTitle: 'Waiting for opponent to choose destination',
                             cardCondition: { location: 'play area' },
                             onSelect: (player, location) => {
-                                this.game.resolveGameAction(GameActions.moveDude({
-                                    card: dude,
+                                this.game.resolveGameAction(GameActions.moveDude({ 
+                                    card: dude, 
                                     targetUuid: location.uuid
-                                }), context);
-                                this.game.addMessage('{0} uses {1} to move {2} to {3}',
-                                    player, this, dude, location);
+                                }), context);   
+                                this.game.addMessage('{0} uses {1} to move {2} to {3}', 
+                                    player, this, dude, location);                                 
                                 return true;
                             }
-                        });
+                        }); 
                         return true;
                     }
                 });
