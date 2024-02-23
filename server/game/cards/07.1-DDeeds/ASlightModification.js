@@ -14,11 +14,11 @@ class ASlightModification extends ActionCard {
             cost: ability.costs.boot(card => card.isParticipating() &&
                 card.parent && card.parent.getType() === 'dude' &&
                 card.hasKeyword('gadget')),
-            message: context =>
-                this.game.addMessage('{0} uses {1} and boots {2} to prevent any effect of a {3}',
+            message: context => 
+                this.game.addMessage('{0} uses {1} and boots {2} to prevent any effect of a {3}', 
                     context.player, this, context.costs.boot, context.event.ability.card),
             handler: context => {
-                context.event.ability.cancel(true);
+                context.event.ability.cancel(true); 
             }
         });
     }
