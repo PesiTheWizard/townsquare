@@ -67,7 +67,7 @@ class NoTurningBack extends ActionCard {
                     },
                     match: context.player,
                     effect: ability.effects.dudesCannotFlee()
-                }));
+                }));       
                 this.game.addMessage('{0}\'s dudes cannot flee this round because of {1}', context.player, this);
             }
         });
