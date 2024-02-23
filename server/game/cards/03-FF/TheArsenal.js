@@ -13,7 +13,7 @@ class TheArsenal extends OutfitCard {
                 card.controller.equals(this.owner) &&
                 (card.isGadget() || card.isSpell())
             ),
-            message: context =>
+            message: context => 
                 this.game.addMessage('{0} uses {1} to call out {2}', context.player, this, context.target),
             handler: context => {
                 context.ability.selectAnotherTarget(context.player, context, {
@@ -28,13 +28,13 @@ class TheArsenal extends OutfitCard {
                     gameAction: 'callout',
                     onSelect: (player, callee) => {
                         this.game.resolveGameAction(GameActions.callOut({ caller: context.costs.boot.parent, callee }), context).thenExecute(() => {
-                            this.game.addMessage('{0} uses {1} to have {2} call out {3}',
-                                player, this, context.costs.boot.parent, callee);
+                            this.game.addMessage('{0} uses {1} to have {2} call out {3}', 
+                                player, this, context.costs.boot.parent, callee);  
                         });
                         return true;
                     },
                     source: this
-                });
+                });                
             }
         });
     }
