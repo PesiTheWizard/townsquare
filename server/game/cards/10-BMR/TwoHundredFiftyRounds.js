@@ -10,12 +10,12 @@ class TwoHundredFiftyRounds extends TechniqueCard {
             playType: ['shootout'],
             combo: context => context.kfDude.locationCard && context.kfDude.locationCard.controller.equals(this.owner),
             onSuccess: context => {
-                this.game.resolveGameAction(GameActions.decreaseCasualties({
+                this.game.resolveGameAction(GameActions.decreaseCasualties({ 
                     player: context.player,
                     amount: 1
                 }), context).thenExecute(() => {
                     this.game.addMessage('{0} uses {1} to reduce their casualties by 1', context.player, this);
-                });
+                });  
             },
             source: this
         });
