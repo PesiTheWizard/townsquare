@@ -29,8 +29,8 @@ class CulpabilityScientizer extends GoodsCard {
             // about the location 
             target: {
                 activePromptTitle: 'Choose your dude',
-                cardCondition: {
-                    location: 'play area',
+                cardCondition: { 
+                    location: 'play area', 
                     controller: 'current',
                     condition: card => card.gamelocation === this.gamelocation
                 },
