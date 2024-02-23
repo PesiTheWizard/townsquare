@@ -8,7 +8,7 @@ class CominUpRoses extends ActionCard {
             target: {
                 activePromptTitle: 'Choose a card',
                 cardCondition: { 
-                    condition: card => card.location === 'draw hand' && card.controller === this.controller &&
+                    condition: card => card.location === 'draw hand' && card.controller.equals(this.controller) &&
                         card.controller.drawHand.every(drawHandCard => card === drawHandCard || card.value !== drawHandCard.value) 
                 },
                 cardType: ['dude', 'deed', 'goods', 'spell', 'action']

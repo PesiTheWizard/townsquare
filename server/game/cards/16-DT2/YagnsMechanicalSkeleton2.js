@@ -30,7 +30,7 @@ class YagnsMechanicalSkeleton2 extends GoodsCard {
 
     matchesReactCondition(card, context) {
         return this.parent && card === this.parent && context &&
-            context.player && context.player !== this.controller;
+            context.player && !context.player.equals(this.controller);
     }
 }
 

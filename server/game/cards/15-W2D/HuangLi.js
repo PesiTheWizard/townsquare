@@ -9,7 +9,7 @@ class HuangLi extends DudeCard {
             title: 'Shootout: Huang Li',
             playType: ['shootout'],
             cost: ability.costs.boot(card =>
-                card.controller === this.controller &&
+                card.controller.equals(this.controller) &&
                 card.getType() === 'dude' &&
                 card.isParticipating()),
             handler: context => {

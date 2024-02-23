@@ -22,11 +22,11 @@ class DariusHellstromme extends LegendCard {
             title: 'Darius Hellstromme',
             when: {
                 onCardAced: event => this.game.shootout && 
-                    event.card.controller !== this.controller &&
+                    !event.card.controller.equals(this.controller) &&
                     event.card.getType() === 'dude' &&
                     event.card.isParticipating(),
                 onCardDiscarded: event => this.game.shootout && 
-                    event.card.controller !== this.controller &&
+                    !event.card.controller.equals(this.controller) &&
                     event.card.getType() === 'dude' &&
                     event.card.isParticipating()
             },

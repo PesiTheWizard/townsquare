@@ -21,7 +21,7 @@ class ValeriaBattenExp1 extends DudeCard {
             playType: ['noon'],
             cost: ability.costs.boot(card => card.location === 'play area' &&
                 card.getType() === 'dude' &&
-                card.controller === this.controller),
+                card.controller.equals(this.controller)),
             message: context => this.game.addMessage('{0} uses {1} and boots {2} to give them +1 influence', 
                 context.player, this, context.costs.boot),
             handler: context => {

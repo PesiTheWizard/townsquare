@@ -5,7 +5,7 @@ class AutoRevolver extends GoodsCard {
     setupCardAbilities(ability) {
         this.persistentEffect({
             condition: () => this.parent && this.parent.isParticipating(),
-            match: player => player === this.controller,
+            match: player => player.equals(this.controller),
             effect: [
                 ability.effects.addRedrawBonus(1)
             ]
@@ -18,7 +18,7 @@ class AutoRevolver extends GoodsCard {
             target: {
                 activePromptTitle: 'Select dude to be equipped',
                 cardCondition: card => card.location === 'play area' && card.getType() === 'dude' && card.isParticipating() &&
-                    card.controller === this.controller
+                    card.controller.equals(this.controller)
             },
             message: context => this.game.addMessage('{0} plays {1} and gives it to {2}', context.player, this, context.target),
             handler: context => {

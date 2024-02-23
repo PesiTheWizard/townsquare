@@ -6,7 +6,7 @@ class JamesGhetty extends DudeCard {
             condition: () => this.game.shootout,
             match: this,
             effect: ability.effects.canSpendGhostRock(spendParams =>
-                spendParams.activePlayer === this.controller && this.isShootoutAbility(spendParams)
+                spendParams.activePlayer.equals(this.controller) && this.isShootoutAbility(spendParams)
             )
         });
         this.traitReaction({

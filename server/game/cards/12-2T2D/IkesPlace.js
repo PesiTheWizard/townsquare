@@ -12,7 +12,7 @@ class IkesPlace extends DeedCard {
                 cardCondition: { 
                     location: 'play area', 
                     controller: 'any',
-                    condition: card => card.controller === this.controller || this.isSameStreet(card)  
+                    condition: card => card.controller.equals(this.controller) || this.isSameStreet(card)
                 },
                 cardType: ['deed']
             },

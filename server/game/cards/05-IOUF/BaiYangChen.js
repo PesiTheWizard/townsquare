@@ -9,7 +9,7 @@ class BaiYangChen extends DudeCard {
         });
         this.persistentEffect({
             condition: () => this.isInOpponentsHome(),
-            match: player => player === this.controller,
+            match: player => player.equals(this.controller),
             effect: ability.effects.modifyHandSize(2)
         });
     }

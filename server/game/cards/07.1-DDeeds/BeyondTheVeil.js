@@ -22,7 +22,7 @@ class BeyondTheVeil extends OutfitCard {
             cost: [
                 ability.costs.bootSelf(),
                 ability.costs.boot((card, context) => card.parent &&
-                    card.controller === this.owner &&
+                    card.controller.equals(this.owner) &&
                     card.hasKeyword('totem') &&
                     (!context.target || card.gamelocation !== context.target.gamelocation))
             ],

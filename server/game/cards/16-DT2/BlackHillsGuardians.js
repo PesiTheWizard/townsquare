@@ -20,7 +20,7 @@ class BlackHillsGuardians extends OutfitCard {
             playType: ['shootout'],
             cost: ability.costs.boot(card =>
                 card.location === 'play area' &&
-                card.controller === this.owner &&
+                card.controller.equals(this.owner) &&
                 card.hasKeyword('holy ground')
             ),
             repeatable: true,

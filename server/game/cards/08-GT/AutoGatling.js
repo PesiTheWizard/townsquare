@@ -3,7 +3,7 @@ const GoodsCard = require('../../goodscard.js');
 class AutoGatling extends GoodsCard {
     setupCardAbilities(ability) {
         this.attachmentRestriction(card => 
-            card.controller === this.controller &&
+            card.controller.equals(this.controller) &&
             (card.getType() === 'deed' || card.getType() === 'outfit')
         );
         this.persistentEffect({

@@ -8,7 +8,7 @@ class MagicalDistraction extends ActionCard {
             cost: ability.costs.discardFromPlay(card => 
                 card.location === 'play area' &&
                 card.getType() === 'spell' &&
-                card.parent.controller === this.controller &&
+                card.parent.controller.equals(this.controller) &&
                 card.parent.isParticipating()
             ),
             handler: context => {

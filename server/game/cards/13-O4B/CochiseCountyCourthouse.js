@@ -16,7 +16,7 @@ class CochiseCountyCourthouse extends DeedCard {
                     activePromptTitle: 'Select a dude to convict',
                     waitingPromptTitle: 'Waiting for opponent to select dude',
                     cardCondition: card => card.location === 'play area' &&
-                        card.controller !== context.player &&
+                        !card.controller.equals(context.player) &&
                         card.influence <= context.player.getSpendableGhostRock(),
                     cardType: 'dude',
                     onSelect: (player, dude) => {

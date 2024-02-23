@@ -26,7 +26,7 @@ class LaQuema extends GoodsCard {
                     activePromptTitle: 'Select a dude',
                     waitingPromptTitle: 'Waiting for opponent to select dude',
                     cardCondition: card => card.location === 'play area' && 
-                        card.controller !== this.controller && 
+                        !card.controller.equals(this.controller) &&
                         card.isParticipating(),
                     cardType: 'dude',
                     gameAction: 'boot',

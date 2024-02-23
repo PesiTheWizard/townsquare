@@ -26,7 +26,7 @@ class SpiritTrail extends SpellCard {
                     activePromptTitle: 'Select a dude',
                     waitingPromptTitle: 'Waiting for opponent to select dude',
                     cardCondition: card => card.location === 'play area' && 
-                        card.controller === context.player &&
+                        card.controller.equals(context.player) &&
                         card.gamelocation === this.gamelocation,
                     cardType: 'dude',
                     gameAction: 'moveDude',

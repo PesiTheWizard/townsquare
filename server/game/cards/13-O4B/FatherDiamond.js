@@ -11,7 +11,7 @@ class FatherDiamond extends DudeCard {
             ifCondition: () => {
                 const thisLocationCard = this.locationCard;
                 return thisLocationCard && thisLocationCard.getType() === 'deed' && 
-                    thisLocationCard.owner !== this.controller;
+                    !thisLocationCard.owner.equals(this.controller);
             },
             ifFailMessage: context => 
                 this.game.addMessage('{0} uses {1} but it fails because he is not at a deed {0} does not own', 
@@ -30,7 +30,7 @@ class FatherDiamond extends DudeCard {
                         activePromptTitle: 'Choose your dude to send home',
                         waitingPromptTitle: 'Waiting for opponent to select dude',
                         cardCondition: card => card.location === 'play area' &&
-                            card.controller === context.player &&
+                            card.controller.equals(context.player) &&
                             card.gamelocation === this.gamelocation,
                         cardType: 'dude',
                         gameAction: ['sendHome'],

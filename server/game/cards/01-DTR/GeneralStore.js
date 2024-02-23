@@ -9,7 +9,7 @@ class GeneralStore extends DeedCard {
             cost: ability.costs.bootSelf(),
             target:{
                 activePromptTitle: 'Select a goods or spell to attach',
-                cardCondition: { location: 'hand', condition: card => card.owner === this.controller },
+                cardCondition: { location: 'hand', condition: card => card.owner.equals(this.controller) },
                 cardType: ['goods', 'spell']
             },
             message: context => {

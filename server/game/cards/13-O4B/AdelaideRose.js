@@ -27,7 +27,7 @@ class AdelaideRose extends DudeCard {
                     context.ability.selectAnotherTarget(context.player, context, {
                         activePromptTitle: 'Choose your dude',
                         cardCondition: card => card.isParticipating() &&
-                            card.controller === context.player,
+                            card.controller.equals(context.player),
                         cardType: 'dude',
                         onSelect: (player, card) => {
                             this.applyAbilityEffect(context.ability, ability => ({

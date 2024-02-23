@@ -6,7 +6,7 @@ class StonesColtDragoons extends GoodsCard {
         this.reaction({
             when: {
                 onDudeJoinedPosse: event => 
-                    event.card.controller !== this.controller && 
+                    !event.card.controller.equals(this.controller) &&
                     event.options.isCardEffect
             },
             cost: ability.costs.bootSelf(),

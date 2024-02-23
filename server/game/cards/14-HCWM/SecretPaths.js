@@ -13,7 +13,7 @@ class SecretPaths extends SpellCard {
             difficulty: 8,
             onSuccess: (context) => {
                 const dudesToMove = this.game.getDudesAtLocation(this.gamelocation, 
-                    dude => dude.controller === context.player && !dude.booted);
+                    dude => dude.controller.equals(context.player) && !dude.booted);
                 const movedDudes = [];
                 let action = GameActions.simultaneously(
                     dudesToMove.map(card => GameActions.moveDude({

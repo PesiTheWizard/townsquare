@@ -15,7 +15,7 @@ class NicoleSumner extends DudeCard {
         this.reaction({
             title: 'Reduce Bounty to 0',
             when: {
-                onFirstPlayerDetermined: event => event.player === this.controller
+                onFirstPlayerDetermined: event => event.player.equals(this.controller)
             },
             message: context => this.game.addMessage('{0} uses {1}\'s react to reduce her bounty to 0', context.player, this),
             handler: (context) => {

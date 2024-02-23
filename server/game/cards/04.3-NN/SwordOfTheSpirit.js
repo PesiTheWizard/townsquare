@@ -11,7 +11,7 @@ class SwordOfTheSpirit extends SpellCard {
                     activePromptTitle: 'Choose a dude',
                     waitingPromptTitle: 'Waiting for opponent to choose a dude',
                     cardCondition: card => card.location === 'play area' &&
-                        card.controller === this.controller &&
+                        card.controller.equals(this.controller) &&
                         card.hasAttachmentWithKeywords(['melee', 'weapon']),
                     cardType: 'dude',
                     onSelect: (player, dudeWithWeapon) => {
@@ -34,7 +34,7 @@ class SwordOfTheSpirit extends SpellCard {
                                     ]
                                 }));  
                                 this.game.addMessage('{0} uses {1} to bless {2}\'s weapon. While they have {3}, they have +1 bullets, ' +
-                                    'become a stud, and cannot be affected by opposing spells', player, this, dudeWithWeapon, weapon);                             
+                                    'become a stud, and cannot be affected by opposing spells', player, this, dudeWithWeapon, weapon);                          
                                 return true;
                             }
                         });

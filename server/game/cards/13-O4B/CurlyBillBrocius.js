@@ -13,7 +13,7 @@ class CurlyBillBrocius extends DudeCard {
                     activePromptTitle: 'Select your dude',
                     waitingPromptTitle: 'Waiting for opponent to select dude',
                     cardCondition: card => card.location === 'play area' &&
-                        card.controller === this.controller,
+                        card.controller.equals(this.controller),
                     cardType: 'dude',
                     onSelect: (player, card) => {
                         this.game.resolveGameAction(GameActions.addBounty({ card }), context).thenExecute(() => {
@@ -30,7 +30,7 @@ class CurlyBillBrocius extends DudeCard {
             title: 'Curly Bill Brocius',
             when: {
                 onShootoutCasualtiesStepStarted: () => this.isParticipating() && 
-                    this.game.shootout.winner === this.controller &&
+                    this.game.shootout.winner.equals(this.controller) &&
                     this.game.shootout.getPosseStat(this.controller, 'bounty') > this.game.shootout.getPosseStat(this.controller.getOpponent(), 'bounty')
             },
             cost: ability.costs.bootSelf(),

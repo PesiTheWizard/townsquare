@@ -21,7 +21,7 @@ class LarrySevensSwift extends DudeCard {
                         activePromptTitle: 'Select an attachment',
                         waitingPromptTitle: 'Waiting for opponent to select an attachment',
                         cardCondition: card => card.location === 'play area' && 
-                            card.controller !== this.controller &&
+                            !card.controller.equals(this.controller) &&
                             card.isParticipating(),
                         cardType: ['spell', 'goods', 'action'],
                         gameAction: 'boot',

@@ -11,7 +11,7 @@ class WaltersCreekDistillery extends DeedCard {
                 activePromptTitle: 'Select Saloon or Casino',
                 choosingPlayer: 'current',
                 cardCondition: { location: 'play area', controller: 'any', condition: card => 
-                    (card.owner === this.controller || card.controller === this.controller) &&
+                    (card.owner.equals(this.controller) || card.controller.equals(this.controller)) &&
                     card.hasOneOfKeywords(['Saloon', 'Casino']) &&
                     this.isSameStreet(card)
                 },

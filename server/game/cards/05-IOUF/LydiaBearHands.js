@@ -22,7 +22,7 @@ class LydiaBearHands extends DudeCard {
                     this.game.promptForSelect(context.player, {
                         activePromptTitle: 'Select a dude',
                         waitingPromptTitle: 'Waiting for opponent to select dude',
-                        cardCondition: card => card.controller === this.controller &&
+                        cardCondition: card => card.controller.equals(this.controller) &&
                             card.isParticipating(),
                         cardType: 'dude',
                         onSelect: (player, card) => {

@@ -19,7 +19,7 @@ class OdditiesOfNature extends OutfitCard {
             cost: [
                 ability.costs.bootSelf(),
                 ability.costs.boot(card => card.location === 'play area' &&
-                    card.controller === this.owner &&
+                    card.controller.equals(this.owner) &&
                     card.getType() === 'dude' &&
                     card.hasKeyword('abomination') &&
                     card.isInTownSquare())
@@ -31,7 +31,7 @@ class OdditiesOfNature extends OutfitCard {
                 context.ability.selectAnotherTarget(context.player, context, {
                     activePromptTitle: 'Choose a dude to boot',
                     cardCondition: card => card.location === 'play area' &&
-                        card.controller !== context.player &&
+                        !card.controller.equals(context.player) &&
                         card.isInTownSquare(),
                     cardType: 'dude',
                     gameAction: 'boot',

@@ -21,7 +21,7 @@ class Fetch extends SpellCard {
                     this.game.promptForSelect(event.player, {
                         activePromptTitle: 'Select a card',
                         waitingPromptTitle: 'Waiting for opponent to select card',
-                        cardCondition: card => card.location === 'draw hand' && card.controller === this.controller,
+                        cardCondition: card => card.location === 'draw hand' && card.controller.equals(this.controller),
                         cardType: ['dude', 'deed', 'goods', 'spell', 'action', 'joker'],
                         onSelect: (player, card) => {
                             if(player.moveCardWithContext(card, 'hand', context)) {

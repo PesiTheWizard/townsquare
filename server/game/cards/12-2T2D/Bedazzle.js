@@ -17,7 +17,7 @@ class Bedazzle extends SpellCard {
                     context.ability.selectAnotherTarget(context.player, context, {
                         activePromptTitle: 'Choose opposing dude to bedazzle',
                         cardCondition: card => card.location === 'play area' &&
-                            card.controller === context.player.getOpponent() &&
+                            card.controller.equals(context.player.getOpponent()) &&
                             card.isParticipating(),
                         cardType: 'dude',
                         onSelect: (p, dazzlee) => {

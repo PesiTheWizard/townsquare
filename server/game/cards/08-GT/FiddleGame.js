@@ -13,7 +13,7 @@ class FiddleGame extends ActionCard {
             ignoreActionCosts: true,
             location: 'play area',
             when: {
-                onCardAbilityResolved: event => event.context.player !== this.controller &&
+                onCardAbilityResolved: event => !event.context.player.equals(this.controller) &&
                     event.ability.isCardAbility() &&
                     event.ability.playTypePlayed() === 'cheatin resolution'
             },

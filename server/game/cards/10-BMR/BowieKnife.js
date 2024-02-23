@@ -13,7 +13,7 @@ class BowieKnife extends GoodsCard {
             target: {
                 activePromptTitle: 'Select dude to be equipped',
                 cardCondition: card => card.location === 'play area' && card.getType() === 'dude' && card.isParticipating() &&
-                    card.controller === this.controller
+                    card.controller.equals(this.controller)
             },
             message: context => this.game.addMessage('{0} plays {1} and gives it to {2}', context.player, this, context.target),
             handler: context => {

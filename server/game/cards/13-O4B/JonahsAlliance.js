@@ -33,7 +33,7 @@ class JonahsAlliance extends OutfitCard {
                     activePromptTitle: 'Select a hex',
                     waitingPromptTitle: 'Waiting for opponent to select hex',
                     cardCondition: card => card.location === 'play area' &&
-                        card.controller === this.controller &&
+                        card.controller.equals(this.controller) &&
                         card.getType() === 'spell' &&
                         card.isHex(),
                     gameAction: 'boot',

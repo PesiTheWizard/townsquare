@@ -18,7 +18,7 @@ class ShieldOfFaith extends SpellCard {
                     ]
                 })); 
                 this.game.addMessage('{0} uses {1} to prevent Dudes to be aced or discarded during this shootout, ' +
-                    'except as a casualty for losing the round or due to their owner\'s card abilities or traits', context.player, this, context.target);                
+                    'except as a casualty for losing the round or due to their owner\'s card abilities or traits', context.player, this, context.target);       
                 this.game.resolveGameAction(GameActions.decreaseCasualties({ 
                     player: context.player, 
                     amount: 1
@@ -32,8 +32,8 @@ class ShieldOfFaith extends SpellCard {
 
     abilityProtectCondition(context) {
         return context && (
-            (!context.isCasualty && context.player !== context.card.controller) || 
-            (context.shootout && context.shootout.loser !== context.card.controller)
+            (!context.isCasualty && !context.player.equals(context.card.controller)) ||
+            (context.shootout && !context.shootout.loser.equals(context.card.controller))
         );
     }
 }

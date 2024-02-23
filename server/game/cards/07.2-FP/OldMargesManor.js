@@ -11,7 +11,7 @@ class OldMargesManor extends DeedCard {
             match: this,
             effect: ability.effects.canSpendGhostRock(spendParams =>
                 this.game.shootout &&
-                spendParams.activePlayer === this.controller && 
+                spendParams.activePlayer.equals(this.controller) && 
                 spendParams.context && spendParams.context.source &&
                 (spendParams.context.source.getType() === 'action' ||
                 (spendParams.context.source.hasKeyword('gadget') && this.isCardAbility(spendParams)))

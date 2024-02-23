@@ -17,9 +17,9 @@ class ProtectionRacket extends OutfitCard {
             handler: context => {
                 let numOfOccupiedDeeds = 0;
                 let numOfDeedsOwnedByOpp = 0;
-                this.game.filterCardsInPlay(card => card.getType() === 'deed' && card.owner !== context.player)
+                this.game.filterCardsInPlay(card => card.getType() === 'deed' && !card.owner.equals(context.player))
                     .forEach(deed => {
-                        if(deed.controller === context.player) {
+                        if(deed.controller.equals(context.player)) {
                             numOfOccupiedDeeds += 1;
                         }
                         numOfDeedsOwnedByOpp += 1;

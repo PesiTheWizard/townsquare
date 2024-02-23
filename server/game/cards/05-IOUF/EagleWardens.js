@@ -11,7 +11,7 @@ class EagleWardens extends OutfitCard {
             cost: [
                 ability.costs.bootSelf(),
                 ability.costs.boot(card => card.location === 'play area' &&
-                    card.controller === this.owner &&
+                    card.controller.equals(this.owner) &&
                     card.getType() === 'dude' &&
                     card.gamelocation === this.game.townsquare.uuid)
             ],

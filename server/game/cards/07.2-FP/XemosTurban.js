@@ -24,7 +24,7 @@ class XemosTurban extends GoodsCard {
                                         activePromptTitle: 'Select a card to discard',
                                         mode: 'exactly',
                                         numCards: 1,
-                                        cardCondition: card => card.location === 'hand' && card.controller === this.controller,
+                                        cardCondition: card => card.location === 'hand' && card.controller.equals(this.controller),
                                         onSelect: (p, cards) => {
                                             this.game.resolveGameAction(GameActions.discardCard({ card: cards[0] }), context).thenExecute(() => {
                                                 this.game.addMessage('{0} uses {1} and pays 1 GR to draw a card, and discard {2} and unboot itself', 

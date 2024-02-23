@@ -10,7 +10,7 @@ class FeatheredFriend extends GoodsCard {
             playType: ['noon'],
             cost: ability.costs.bootSelf(),
             ifCondition: () => 
-                this.game.getDudesAtLocation(this.gamelocation, dude => dude.controller !== this.controller).length,
+                this.game.getDudesAtLocation(this.gamelocation, dude => !dude.controller.equals(this.controller)).length,
             ifFailMessage: context =>
                 this.game.addMessage('{0} uses {1}, but there is no opponent\'s dude at that location', context.player, this),
             handler: context => {

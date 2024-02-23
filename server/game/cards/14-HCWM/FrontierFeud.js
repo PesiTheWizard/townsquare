@@ -66,7 +66,7 @@ class FrontierFeud extends ActionCard {
             activePromptTitle: 'Select a dude for call out',
             waitingPromptTitle: 'Waiting for opponent to select dude',
             cardCondition: card => card.location === 'play area' &&
-                card.controller !== this.owner &&
+                !card.controller.equals(this.owner) &&
                 !card.isInOutOfTown() &&
                 !card.isInTownSquare(),
             cardType: 'dude',

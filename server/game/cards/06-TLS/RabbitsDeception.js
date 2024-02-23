@@ -19,7 +19,7 @@ class RabbitsDeception extends TechniqueCard {
                     context.ability.selectAnotherTarget(context.player, context, {
                         activePromptTitle: 'Select a dude to send home booted',
                         waitingPromptTitle: 'Waiting for opponent to select dude',
-                        cardCondition: card => card.controller !== this.controller && card.isParticipating(),
+                        cardCondition: card => !card.controller.equals(this.controller) && card.isParticipating(),
                         cardType: 'dude',
                         gameAction: ['sendHome', 'boot'],
                         onSelect: (player, card) => {

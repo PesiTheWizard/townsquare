@@ -17,7 +17,7 @@ class DancingButterfly extends SpellCard {
                                 activePromptTitle: 'Select a dude to send home',
                                 waitingPromptTitle: 'Waiting for opponent to select dude',
                                 cardCondition: card => card.location === 'play area' &&
-                                    card.controller === player &&
+                                    card.controller.equals(player) &&
                                     card.isParticipating(),
                                 cardType: 'dude',
                                 gameAction: ['sendHome', 'boot'],
@@ -26,7 +26,7 @@ class DancingButterfly extends SpellCard {
                                     this.game.promptForSelect(p1, {
                                         activePromptTitle: 'Select a deed to give +1 CP',
                                         waitingPromptTitle: 'Waiting for opponent to select deed',
-                                        cardCondition: card => card.location === 'play area' && card.owner === context.player,
+                                        cardCondition: card => card.location === 'play area' && card.owner.equals(context.player),
                                         cardType: 'deed',
                                         onSelect: (p2, deed) => {
                                             deed.modifyControl(1);

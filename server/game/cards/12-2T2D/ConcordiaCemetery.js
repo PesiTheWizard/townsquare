@@ -9,7 +9,7 @@ class ConcordiaCemetery extends DeedCard {
             triggerBefore: true,
             when: {
                 onCardAced: event => event.card.getType() === 'dude' &&
-                    event.card.controller !== this.controller &&
+                    !event.card.controller.equals(this.controller) &&
                     event.card.isParticipating() &&
                     !event.card.isToken()
             },

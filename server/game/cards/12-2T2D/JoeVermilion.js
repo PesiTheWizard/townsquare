@@ -10,7 +10,7 @@ class JoeVermilion extends DudeCard {
             ifCondition: () => {
                 const thisLocationCard = this.locationCard;
                 return thisLocationCard && thisLocationCard.getType() === 'deed' &&
-                    thisLocationCard.owner !== this.controller;
+                    !thisLocationCard.owner.equals(this.controller);
             },
             ifFailMessage: context =>
                 this.game.addMessage('{0} uses {1} but it fails because he is not at deed {0} does not own', 

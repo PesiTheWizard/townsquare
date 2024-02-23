@@ -18,7 +18,7 @@ class HellstrommePlant9 extends DeedCard {
                     location: 'play area', 
                     controller: 'current', 
                     condition: card => card.parent &&
-                        card.parent.owner === this.controller &&
+                        card.parent.owner.equals(this.controller) &&
                         (!this.game.shootout || card.isParticipating()) &&
                         (card.hasKeyword('gadget') || card.hasKeyword('horse'))
                 }

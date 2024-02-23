@@ -17,7 +17,7 @@ class JusticeInExile extends OutfitCard {
                     activePromptTitle: 'Choose a card to raise bounty',
                     cardCondition: { 
                         location: 'play area', 
-                        condition: card => card.controller === opponent
+                        condition: card => card.controller.equals(opponent)
                     },
                     cardType: 'dude',
                     gameAction: 'addBounty',
@@ -65,11 +65,11 @@ class JusticeInExile extends OutfitCard {
 
     jieReactCondition(event) {
         return [PhaseNames.HighNoon, PhaseNames.Shootout].includes(this.game.currentPhase) &&
-            event.card.controller !== this.owner &&
+            !event.card.controller.equals(this.owner) &&
             event.card.getType() === 'dude' &&
             event.card.isWanted() &&
             this.game.getDudesAtLocation(event.originalGameLocation, dude => 
-                dude.controller === this.owner && dude.hasKeyword('deputy')).length;
+                dude.controller.equals(this.owner) && dude.hasKeyword('deputy')).length;
     }
 }
 

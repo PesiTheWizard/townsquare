@@ -37,7 +37,7 @@ class CallingTheCavalry2 extends ActionCard {
                 context.ability.selectAnotherTarget(context.player, context, {
                     activePromptTitle: 'Select a dude to become a stud',
                     waitingPromptTitle: 'Waiting for opponent to select dude',
-                    cardCondition: card => card.location === 'play area' && card.controller === context.player && card.isParticipating(),
+                    cardCondition: card => card.location === 'play area' && card.controller.equals(context.player) && card.isParticipating(),
                     cardType: 'dude',
                     onSelect: (player, card) => {
                         this.applyAbilityEffect(context.ability, ability => ({

@@ -16,7 +16,7 @@ class MindTwist extends SpellCard {
                     controller: 'any', 
                     condition: (card, context) => card !== this &&
                         card.parent && card.parent.getType() === 'dude' &&
-                        (!this.game.shootout || (this.parent.isParticipating() && this.parent.controller !== context.player)) &&
+                        (!this.game.shootout || (this.parent.isParticipating() && !this.parent.controller.equals(context.player))) &&
                         card.gamelocation === this.gamelocation
                 },
                 cardType: ['spell'],

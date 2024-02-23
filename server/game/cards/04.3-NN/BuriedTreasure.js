@@ -8,7 +8,7 @@ class BuriedTreasure extends ActionCard {
             title: 'Noon: Buried Treasure',
             playType: ['noon'],
             cost: ability.costs.ace(card => card.location === 'discard pile' && 
-                card.controller === this.controller),
+                card.controller.equals(this.controller)),
             message: context => 
                 this.game.addMessage('{0} uses {1} and aces {2} to gain 3 GR and draw a card', 
                     context.player, this, context.costs.ace),

@@ -9,7 +9,7 @@ class TheFourthRing extends OutfitCard {
             when: {
                 onPullSuccess: event =>
                     event.pullingDude && event.source &&
-                    event.pullingDude.controller === this.controller && 
+                    event.pullingDude.controller.equals(this.controller) && 
                     !event.pullingDude.isAtHome() &&
                     event.source.getType() === 'spell'
             },

@@ -8,7 +8,7 @@ class ASlightModification extends ActionCard {
             title: 'React: A Slight Modification',
             triggerBefore: true,
             when: {
-                onAbilityResolutionStarted: event => event.context.player !== this.controller &&
+                onAbilityResolutionStarted: event => !event.context.player.equals(this.controller) &&
                     ['shootout', 'shootout:join', 'resolution'].includes(event.ability.playTypePlayed())
             },
             cost: ability.costs.boot(card => card.isParticipating() &&

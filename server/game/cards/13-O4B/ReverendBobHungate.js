@@ -35,7 +35,7 @@ class ReverendBobHungate extends DudeCard {
                     activePromptTitle: 'Choose a dude',
                     waitingPromptTitle: 'Waiting for opponent to select dude',
                     cardCondition: card => card.location === 'play area' &&
-                        card.controller === context.player.getOpponent() &&
+                        card.controller.equals(context.player.getOpponent()) &&
                         card.isParticipating(),
                     cardType: 'dude',
                     onSelect: (player, oppDude) => {

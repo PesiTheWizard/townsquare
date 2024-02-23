@@ -10,7 +10,7 @@ class RiddenDown extends ActionCard {
             playType: ['noon'],
             cost: ability.costs.boot(card =>
                 card.location === 'play area' &&
-                card.controller === this.owner &&
+                card.controller.equals(this.owner) &&
                 card.hasKeyword('horse')),
             handler: context => {
                 context.ability.selectAnotherTarget(context.player, context, {

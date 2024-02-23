@@ -22,7 +22,7 @@ class GetBehindMeSatan extends SpellCard {
                         activePromptTitle: 'Select an abomination',
                         waitingPromptTitle: 'Waiting for opponent to select an abomination',
                         cardCondition: card => card.location === 'play area' &&
-                        card.controller !== this.controller && 
+                        !card.controller.equals(this.controller) &&
                         card.isParticipating() &&
                         card.hasKeyword('abomination'),
                         cardType: 'dude',

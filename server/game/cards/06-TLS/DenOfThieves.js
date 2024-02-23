@@ -22,7 +22,7 @@ class DenOfThieves extends OutfitCard {
             cost: [
                 ability.costs.bootSelf(),
                 ability.costs.raiseBounty(card => card.location === 'play area' &&
-                    card.controller === this.owner &&
+                    card.controller.equals(this.owner) &&
                     card.hasKeyword('grifter'))
             ],
             message: context => 

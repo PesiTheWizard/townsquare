@@ -49,14 +49,14 @@ class JokersSmile extends DeedCard {
                 this.game.promptForSelect(context.player, {
                     activePromptTitle: 'Select a joker to move to discard',
                     waitingPromptTitle: 'Waiting for opponent to select joker',
-                    cardCondition: card => card.location === 'dead pile' && card.controller === context.player,
+                    cardCondition: card => card.location === 'dead pile' && card.controller.equals(context.player),
                     cardType: 'joker',
                     autoSelect: true,
                     onSelect: (player, card) => {
                         if(player.moveCardWithContext(card, 'discard pile', context)) {
                             this.game.addMessage('{0} uses {1} and pays 1 GR to move {2} from Boot Hill to discard pile', player, this, card);
                         } else {
-                            this.game.addMessage('{0} uses {1}, but some effect prevents them from moving {2}', player, this, card);                             
+                            this.game.addMessage('{0} uses {1}, but some effect prevents them from moving {2}', player, this, card);                           
                         }
                         return true;
                     }
