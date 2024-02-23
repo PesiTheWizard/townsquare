@@ -17,12 +17,12 @@ class BowieKnife extends GoodsCard {
             },
             message: context => this.game.addMessage('{0} plays {1} and gives it to {2}', context.player, this, context.target),
             handler: context => {
-                this.game.resolveGameAction(GameActions.putIntoPlay({
+                this.game.resolveGameAction(GameActions.putIntoPlay({ 
                     card: this, 
-                    player: context.player,
-                    params: {
+                    player: context.player, 
+                    params: { 
                         playingType: 'ability',
-                        targetParent: context.target,
+                        targetParent: context.target, 
                         context: context
                     }
                 }));
