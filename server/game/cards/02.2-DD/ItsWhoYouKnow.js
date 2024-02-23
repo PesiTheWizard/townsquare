@@ -8,8 +8,8 @@ class ItsWhoYouKnow extends ActionCard {
             playType: ['noon'],
             target: {
                 activePromptTitle: 'Choose your dude',
-                cardCondition: {
-                    location: 'play area',
+                cardCondition: { 
+                    location: 'play area', 
                     controller: 'current'
                 },
                 cardType: ['dude']
@@ -30,7 +30,7 @@ class ItsWhoYouKnow extends ActionCard {
                         match: context.target,
                         effect: ability.effects.setAsStud()
                     }), context.causedByPlayType);
-                    this.game.addMessage('{0}\'s dude {1} becomes a stud and for this shootout influence is used instead of bullet rating',
+                    this.game.addMessage('{0}\'s dude {1} becomes a stud and for this shootout influence is used instead of bullet rating', 
                         context.player, context.target);
                 };
                 this.game.once('onShootoutPhaseStarted', eventHandler);
