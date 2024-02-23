@@ -23,7 +23,7 @@ class Intercession extends SpellCard {
                 this.game.addMessage('{0} uses {1} to make {2} a stud', context.player, this, context.target);
             }
         });
-
+        
         this.spellAction({
             title: 'Intercession',
             playType: 'shootout',
@@ -47,13 +47,13 @@ class Intercession extends SpellCard {
                         this.game.addMessage('{0} uses {1} to unboot {2}', context.player, this, context.targets.myDude);
                     });
                 }
-
+                    
                 if(context.targets.theirDude.booted) {
                     this.game.resolveGameAction(GameActions.unbootCard({ card: context.targets.theirDude })).thenExecute(() => {
                         this.game.addMessage('{0} uses {1} to unboot {2}', context.player, this, context.targets.theirDude);
                     });
-                }
-
+                }    
+                    
                 this.applyAbilityEffect(context.ability, ability => ({
                     match: [ 
                         context.targets.myDude,
@@ -61,7 +61,7 @@ class Intercession extends SpellCard {
                     ],
                     effect: ability.effects.modifyBullets(2)
                 }));
-
+                
                 this.game.addMessage('{0} uses {1} to give {2} and {3} +2 Bullets', context.player, this, context.targets.myDude, context.targets.theirDude);
             },
             source: this
