@@ -42,11 +42,11 @@ class CallingTheCavalry extends ActionCard {
                         this.applyAbilityEffect(context.ability, ability => ({
                             match: card,
                             effect: ability.effects.setAsStud()
-                        }));
+                        }));    
                         this.game.addMessage('{0} uses {1} to set {2} as stud', player, this, card);
                         return true;
                     }
-                });
+                });        
             }
         }); 
     }
