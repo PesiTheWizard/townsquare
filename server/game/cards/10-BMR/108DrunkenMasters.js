@@ -62,7 +62,7 @@ class DrunkenMasters extends OutfitCard {
                 });
                 this.game.queueSimpleStep(() => { 
                     this.game.removeListener('onPullSuccess', eventHandler);
-                });
+                }); 
             }
         });
     }
