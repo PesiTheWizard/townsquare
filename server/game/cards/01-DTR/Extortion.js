@@ -9,15 +9,15 @@ class Extortion extends ActionCard {
             playType: ['noon'],
             target: {
                 activePromptTitle: 'Choose a deed',
-                cardCondition: {
-                    location: 'play area',
-                    controller: 'current',
+                cardCondition: { 
+                    location: 'play area', 
+                    controller: 'current', 
                     condition: card => !card.owner.equals(this.controller)
                 },
                 cardType: ['deed']
             },
-            message: context =>
-                this.game.addMessage('{0} uses {1} to gain {2} GR',
+            message: context => 
+                this.game.addMessage('{0} uses {1} to gain {2} GR', 
                     context.player, this, context.target.production),
             handler: context => {
                 context.player.modifyGhostRock(context.target.production);
