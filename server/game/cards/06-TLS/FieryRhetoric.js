@@ -22,10 +22,10 @@ class FieryRhetoric extends SpellCard {
                         effect: ability.effects.modifyControl(numOfWantedDudes)
                     }));
                     if(numOfWantedDudes) {
-                        this.game.addMessage('{0} uses {1} to give {2} +{3} CP until the end of the day',
+                        this.game.addMessage('{0} uses {1} to give {2} +{3} CP until the end of the day', 
                             context.player, this, this.parent, numOfWantedDudes);
                     } else {
-                        this.game.addMessage('{0} uses {1}, but there are no opposing wanted dudes',
+                        this.game.addMessage('{0} uses {1}, but there are no opposing wanted dudes', 
                             context.player, this);
                     }
                 }
