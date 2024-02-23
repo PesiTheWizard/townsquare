@@ -26,17 +26,17 @@ class DrewBeauman extends DudeCard {
                             match: card,
                             targetLocation: card.location,
                             effect: ability.effects.canBeInventedWithoutBooting()
-                        }));
+                        }));  
                         this.game.resolveStandardAbility(StandardActions.putIntoPlay({
                             playType: 'ability',
                             abilitySourceType: 'card',
                             scientist: this
                         }, () => {
                             this.game.addMessage('{0} invents {1} without booting thanks to {2}', player, card, this);
-                        }), player, card);
-                        this.game.queueSimpleStep(() => {
-                            this.game.raiseEvent('onDrewBeaumanFinished');
-                        });
+                        }), player, card);                   
+                        this.game.queueSimpleStep(() => { 
+                            this.game.raiseEvent('onDrewBeaumanFinished'); 
+                        });                         
                         return true;
                     },
                     source: this
