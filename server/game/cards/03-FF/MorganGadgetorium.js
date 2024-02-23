@@ -10,15 +10,15 @@ class MorganGadgetorium extends OutfitCard {
                 onPullForSkill: event => event.player.equals(this.owner)
             },
             cost: ability.costs.bootSelf(),
-            message: context =>
-                this.game.addMessage('{0} uses {1} to raise difficulty of skill check by 2 to {2}',
+            message: context => 
+                this.game.addMessage('{0} uses {1} to raise difficulty of skill check by 2 to {2}', 
                     context.player, this, context.event.difficulty + 2),
             handler: context => {
                 const eventHandler = event => {
                     context.player.modifyGhostRock(1);
                     let unbootText = '';
                     if(context.event.properties.bootedToInvent) {
-                        this.game.resolveGameAction(GameActions.unbootCard({
+                        this.game.resolveGameAction(GameActions.unbootCard({ 
                             card: event.pullingDude
                         }), context);
                         unbootText = ' and unboots {2}';
@@ -27,15 +27,15 @@ class MorganGadgetorium extends OutfitCard {
                 };
                 const saveEventHandler = context.event.handler;
                 context.replaceHandler(pullSkillEvent => {
-                    this.game.onceConditional('onPullSuccess', {
+                    this.game.onceConditional('onPullSuccess', { 
                         condition: event => event.source === pullSkillEvent.properties.source &&
                             event.pullingDude === pullSkillEvent.properties.pullingDude
                     }, eventHandler);
                     pullSkillEvent.difficulty += 2;
                     saveEventHandler(pullSkillEvent);
-                    this.game.queueSimpleStep(() => {
+                    this.game.queueSimpleStep(() => { 
                         this.game.removeListener('onPullSuccess', eventHandler);
-                    });
+                    });     
                 });
             }
         });
