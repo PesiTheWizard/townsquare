@@ -50,7 +50,7 @@ class ElectionDaySlaughter extends ActionCard {
                         },
                         source: this
                     });
-                }
+                }           
             }
         });
     }
