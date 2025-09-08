@@ -11,7 +11,7 @@ class Tresspassin extends ActionCard {
                 cardCondition: {
                     location: 'play area',
                     controller: 'any',
-                    condition: card => card.owner === this.controller && card.isPrivate()
+                    condition: card => card.owner.equals(this.controller) && card.isPrivate()
                 },
                 cardType: ['deed']
             },
@@ -75,3 +75,4 @@ class Tresspassin extends ActionCard {
 Tresspassin.code = '01110';
 
 module.exports = Tresspassin;
+
